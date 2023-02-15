@@ -1,0 +1,15 @@
+!**/glob-import/dir/node_modules
+.DS_Store
+/.vscode/
+/packages/vite/LICENSE
+dist
+dist-ssr
+explorations
+node_modules
+TODOs.md
+.eslintcache
+*.lock
+# yarn.lock
+yarn.lock
+# yarn-error.log
+yarn-error.log

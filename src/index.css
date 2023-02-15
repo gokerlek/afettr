@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.animate-bigger {
+    @apply transform transition duration-300 ease-in-out hover:scale-105;
+}
+
+.animate-bigger-125 {
+    @apply transform transition duration-300 ease-in-out hover:scale-125
+}
+
+.animate-shadow {
+    @apply transform transition duration-300 ease-in-out hover:drop-shadow-lg;
+}
+
+.animate-translate {
+    @apply transform transition duration-300 ease-in-out hover:translate-x-2;
+}
+
+.form-title {
+    @apply text-3xl font-medium;
+}
+
+
