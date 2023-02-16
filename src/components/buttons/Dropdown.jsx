@@ -7,49 +7,54 @@
  *   ];
  */
 
-import { Menu } from "@headlessui/react";
-import { Icon, Text } from "../index.js";
+import React, { useState } from "react";
+import { Listbox } from "@headlessui/react";
+import Icon from "../Icon.jsx";
 import clsx from "clsx";
+import { Text } from "../../components";
 
-const Dropdown = ({ options, big = true }) => {
+const Dropdown = ({ options, placeholder, selection, setSelection }) => {
   return (
-    <Menu as="div" className="relative h-full">
-      <Menu.Button className="h-full">
-        <Icon
-          className="flex h-full items-center cursor-pointer"
-          purpose={big ? "ellipsis-20" : "ellipsis"}
-        />
-      </Menu.Button>
+    <div className="relative h-10 w-full">
+      <div className="absolute inset-x-0 top-0 w-full flex items-center">
+        <Listbox value={selection} onChange={(e) => setSelection(e)} by={"id"}>
+          <div className="flex flex-col w-full min-h-[40px] border border-gray-200 rounded">
+            <Listbox.Button>
+              {({ open }) => (
+                <div className="flex h-10 items-center  justify-between  px-4">
+                  <Text className=" text-gray-500 font-400 text-sm capitalize">
+                    {!!selection ? selection?.label : placeholder}
+                  </Text>
 
-      <Menu.Items className="absolute -right-2 mt-2 w-44 origin-top-right border border-border rounded bg-white shadow-card z-10">
-        <div className="px-2 py-3 ">
-          {options.map((option, index) => (
-            <Menu.Item key={index}>
-              {({ active }) => (
-                <button
-                  onClick={option?.action}
-                  className={clsx(
-                    {
-                      "bg-tGray-100 text-tGray-700":
-                        !option?.label.includes("Delete") && active,
-                      "bg-tGray-100 text-tRed-500":
-                        option?.label.includes("Delete") && active,
-                      "text-tGray-500":
-                        !option?.label.includes("Delete") && !active,
-                      "text-tRed-500":
-                        option?.label.includes("Delete") && !active,
-                    },
-                    "group flex w-full items-center rounded px-2 py-2 text-xs capitalize"
-                  )}
-                >
-                  <Text>{option?.label}</Text>
-                </button>
+                  <Icon purpose={clsx(open ? "up" : "down")} />
+                </div>
               )}
-            </Menu.Item>
-          ))}
-        </div>
-      </Menu.Items>
-    </Menu>
+            </Listbox.Button>
+
+            <Listbox.Options className=" w-full focus:outline-none  bg-white  z-50 mb-2">
+              {options?.map((option) => (
+                <Listbox.Option key={option.id} value={option}>
+                  {({ active, selected }) => {
+                    return (
+                      <div
+                        onClick={option.action}
+                        className={clsx(
+                          `cursor-default select-none text-sm text-gray-500  flex items-start py-1 flex-row gap-2 px-4 capitalize`,
+                          {
+                            "bg-gray-100": selected || active,
+                          }
+                        )}>
+                        <Text className={`${selected ? "font-medium" : "font-normal"}  `}>{option.label}</Text>
+                      </div>
+                    );
+                  }}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </div>
+        </Listbox>
+      </div>
+    </div>
   );
 };
 

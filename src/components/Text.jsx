@@ -14,7 +14,7 @@ const Text = ({ children, noTranslate, markdown, className, onClick }) => {
     );
   } else {
     return (
-      <div className={className} onClick={onClick}>
+      <div className={className} onClick={onClick} >
         {text}
       </div>
     );

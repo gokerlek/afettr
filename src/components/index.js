@@ -10,6 +10,3 @@ export { default as Toggle } from "./buttons/Toggle.jsx";
 
 //LOADING
 export { default as Loading } from "./Loading.jsx";
-
-//MODALS
-export { default as OrderModal } from "./modals/OrderModal.jsx";

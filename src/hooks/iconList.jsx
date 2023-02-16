@@ -2,7 +2,7 @@ import React from "react";
 
 import { ReactComponent as Loading } from "../assets/icons/Loading.svg";
 
-import { ReactComponent as Paketus } from "../assets/icons/logo/Paketus.svg";
+import { ReactComponent as Paketus } from "../assets/icons/logo/Logo.svg";
 
 import { ReactComponent as DownBold } from "../assets/icons/arrows/DownBold.svg";
 import { ReactComponent as Left } from "../assets/icons/arrows/Left.svg";
@@ -11,20 +11,16 @@ import { ReactComponent as Up } from "../assets/icons/arrows/Up.svg";
 import { ReactComponent as Down } from "../assets/icons/arrows/Down.svg";
 import { ReactComponent as Selector } from "../assets/icons/arrows/Selector.svg";
 
-import { ReactComponent as Overview } from "../assets/icons/sidebar/Overview.svg";
-import { ReactComponent as OverviewSolid } from "../assets/icons/sidebar/OverviewSolid.svg";
-import { ReactComponent as Jobs } from "../assets/icons/sidebar/Jobs.svg";
-import { ReactComponent as JobsSolid } from "../assets/icons/sidebar/JobsSolid.svg";
-import { ReactComponent as Candidates } from "../assets/icons/sidebar/Candidates.svg";
-import { ReactComponent as CandidatesSolid } from "../assets/icons/sidebar/CandidatesSolid.svg";
-import { ReactComponent as TalentPools } from "../assets/icons/sidebar/TalentPools.svg";
-import { ReactComponent as TalentPoolsSolid } from "../assets/icons/sidebar/TalentPoolsSolid.svg";
-import { ReactComponent as Reports } from "../assets/icons/sidebar/Reports.svg";
-import { ReactComponent as ReportsSolid } from "../assets/icons/sidebar/ReportsSolid.svg";
-import { ReactComponent as Campaigns } from "../assets/icons/sidebar/Campaigns.svg";
-import { ReactComponent as CampaignsSolid } from "../assets/icons/sidebar/CampaignsSolid.svg";
-import { ReactComponent as Settings } from "../assets/icons/sidebar/Settings.svg";
-import { ReactComponent as SettingsSolid } from "../assets/icons/sidebar/SettingsSolid.svg";
+import { ReactComponent as Shelter } from "../assets/icons/pointers/Shelter.svg";
+import { ReactComponent as SafeAreaAtNight } from "../assets/icons/pointers/SafeAreaAtNight.svg";
+import { ReactComponent as Wc } from "../assets/icons/pointers/Wc.svg";
+import { ReactComponent as SafeSpot } from "../assets/icons/pointers/SafeSpot.svg";
+import { ReactComponent as MyLocation } from "../assets/icons/pointers/MyLocation.svg";
+import { ReactComponent as SoupKitchen } from "../assets/icons/pointers/SoupKitchen.svg";
+import { ReactComponent as Clothes } from "../assets/icons/pointers/Clothes.svg";
+
+import { ReactComponent as ShelterNoLabel } from "../assets/icons/pointers/nolabel/Shelter.svg";
+import { ReactComponent as ClothesNoLabel } from "../assets/icons/pointers/nolabel/Clothes.svg";
 
 import { ReactComponent as Bell } from "../assets/icons/header/Bell.svg";
 import { ReactComponent as Calendar } from "../assets/icons/header/Calendar.svg";
@@ -52,35 +48,27 @@ const iconList = (purpose, { width, height, color }) => {
     case "selector":
       return <Selector />;
 
-    // SIDEBAR
-    case "overview":
-      return <Overview />;
-    case "overview active":
-      return <OverviewSolid />;
-    case "jobs":
-      return <Jobs />;
-    case "jobs active":
-      return <JobsSolid />;
-    case "candidates":
-      return <Candidates />;
-    case "candidates active":
-      return <CandidatesSolid />;
-    case "talent-pools":
-      return <TalentPools />;
-    case "talent-pools active":
-      return <TalentPoolsSolid />;
-    case "reports":
-      return <Reports />;
-    case "reports active":
-      return <ReportsSolid />;
-    case "campaigns":
-      return <Campaigns />;
-    case "campaigns active":
-      return <CampaignsSolid />;
-    case "settings":
-      return <Settings />;
-    case "settings active":
-      return <SettingsSolid />;
+    // POINTERS WITH LABELS
+    case "shelter":
+      return <Shelter />;
+    case "safe-area-at-night":
+      return <SafeAreaAtNight />;
+    case "wc":
+      return <Wc />;
+    case "safe-spot":
+      return <SafeSpot />;
+    case "my-location":
+      return <MyLocation />;
+    case "soup-kitchen":
+      return <SoupKitchen />;
+    case "clothes":
+      return <Clothes />;
+
+    // POINTERS WITHOUT LABELS
+    case "shelter-no-label":
+      return <ShelterNoLabel />;
+    case "clothes-no-label":
+      return <ClothesNoLabel />;
 
     // HEADER
     case "bell":

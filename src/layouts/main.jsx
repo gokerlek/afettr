@@ -1,15 +1,17 @@
 import * as React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "../components/header/index.jsx";
+import Sidebar from "../components/sidebar/index.jsx";
 
 const MainLayout = () => {
   return (
-    <div className="w-screen h-screen">
-      <div />
+    <div className="w-screen h-screen ">
+      <Header />
 
-      <div className="flex flex-row w-screen h-[calc(100vh-84px)]">
-        <div />
+      <div className="flex flex-row  h-[calc(100vh-82px)] gap-5 mx-5">
+        <Sidebar />
 
-        <div className=" w-full">
+        <div className=" flex-1">
           <Outlet />
         </div>
       </div>

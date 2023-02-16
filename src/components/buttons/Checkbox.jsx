@@ -39,9 +39,7 @@ const Checkbox = ({ label, initialState, onChange, isChecked, table }) => {
         transform transition duration-300 ease-in-out hover:scale-110
         focus:outline-none focus:ring-transparent checked:hover:bg-primary"
       />
-      {label && (
-        <label className="text-sm font-medium text-tGray-500">{t(label)}</label>
-      )}
+      {label && <label className="text-sm font-medium text-gray-700 capitalize">{t(label)}</label>}
     </div>
   );
 };
