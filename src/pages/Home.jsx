@@ -1,9 +1,10 @@
 import Maps from "../components/map/Maps.jsx";
 import { Text, Icon, Button } from "../components/index.js";
+import Details from "../components/cards/Details.jsx";
 
 const Home = () => {
   return (
-    <div className="flex gap-5 h-full">
+    <div className="relative flex gap-5 h-full">
       <div className="min-w-[376px] relative  flex flex-col h-full  rounded-lg border border-gray-200 overflow-auto">
         <div className=" absolute inset-0  flex flex-col divide-y divide-gray-200 w-full  overflow-auto no-scrollbar">
           {Array(100)
@@ -26,6 +27,7 @@ const Home = () => {
             ))}
         </div>
       </div>
+      <Details />
       <Maps />
     </div>
   );
