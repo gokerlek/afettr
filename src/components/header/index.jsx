@@ -18,11 +18,11 @@ const Header = () => {
 
           <div className="flex flex-row gap-2 items-center p-1 border-l border-gray-100">
             <a href="#" target="_blank" rel="noreferrer noopener" className="w-6 cursor-pointer">
-              <img src="/public/app/Apple.png" loading="lazy" alt="apple" className="object-cover w-full" />
+              <Icon purpose="apple" />
             </a>
 
             <a href="#" target="_blank" rel="noreferrer noopener" className="w-6 cursor-pointer">
-              <img src="/public/app/Google.png" loading="lazy" className="object-cover w-full" />
+              <Icon purpose="google" />
             </a>
 
             <div className="flex flex-col items-start">

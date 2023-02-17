@@ -25,6 +25,9 @@ import { ReactComponent as ClothesNoLabel } from "../assets/icons/pointers/nolab
 import { ReactComponent as Bell } from "../assets/icons/header/Bell.svg";
 import { ReactComponent as Calendar } from "../assets/icons/header/Calendar.svg";
 
+import { ReactComponent as Apple } from "../assets/icons/header/Apple.svg";
+import { ReactComponent as Google } from "../assets/icons/header/Google.svg";
+
 const iconList = (purpose, { width, height, color }) => {
   switch (purpose) {
     //LOGO
@@ -75,6 +78,10 @@ const iconList = (purpose, { width, height, color }) => {
       return <Bell />;
     case "calendar":
       return <Calendar />;
+    case "apple":
+      return <Apple />;
+    case "google":
+      return <Google />;
 
     default:
       return null;

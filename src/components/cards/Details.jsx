@@ -17,14 +17,12 @@ const Details = () => {
       <div className="flex flex-col w-full border-b border-gray-200 mb-2 pb-2">
         <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">images</Text>
 
-        <div className=" w-[304 px] h-16 overflow-x-auto mr-[-16px] flex  gap-2">
-          <div className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg"></div>
-          <div className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg"></div>
-          <div className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg"></div>
-          <div className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg"></div>
-          <div className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg"></div>
-          <div className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg"></div>
-          <div className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg"></div>
+        <div className=" w-[304 px] h-16 overflow-x-auto mr-[-16px] flex  gap-2 no-scrollbar">
+          {Array(10)
+            .fill("")
+            .map((_, i) => (
+              <div key={i} className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg"></div>
+            ))}
         </div>
       </div>
 
