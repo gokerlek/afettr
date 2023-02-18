@@ -31,6 +31,9 @@ import { ReactComponent as Google } from "../assets/icons/header/Google.svg";
 import { ReactComponent as List } from "../assets/icons/button/List.svg";
 import { ReactComponent as Map } from "../assets/icons/button/Map.svg";
 import { ReactComponent as MapLight } from "../assets/icons/button/MapLight.svg";
+import { ReactComponent as Close } from "../assets/icons/button/Close.svg";
+
+import { ReactComponent as Alert } from "../assets/icons/warining/Alert.svg";
 
 const iconList = (purpose, { width, height, color }) => {
   switch (purpose) {
@@ -94,6 +97,12 @@ const iconList = (purpose, { width, height, color }) => {
       return <Map />;
     case "map light":
       return <MapLight />;
+    case "close":
+      return <Close />;
+
+    // WARNING
+    case "alert":
+      return <Alert />;
 
     default:
       return null;

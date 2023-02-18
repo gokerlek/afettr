@@ -28,11 +28,10 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
       disabledClassName,
       "flex items-center justify-center bg-black rounded-lg py-2 px-4 h-7 gap-2 font-medium",
       " text-white font-medium  text-center text-xs capitalize",
-      " hover:bg-opacity-80",
       {
         "w-full": !fit,
         "w-fit min-w-fit": fit,
-        "cursor-pointer bg-black": !disabled,
+        "cursor-pointer bg-black hover:bg-opacity-80": !disabled,
         "bg-gray-400": disabled,
       }
     ),

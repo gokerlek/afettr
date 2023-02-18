@@ -11,9 +11,9 @@ function createKey(location) {
 const Maps = () => {
   const { openDetail } = useMap();
 
-  const [center, setCenter] = useState({ lat: -28.024, lng: 140.887 });
+  const [center, setCenter] = useState({ lat: -31.56391, lng: 147.154312 });
 
-  const [zoom, setZoom] = useState(3);
+  const [zoom, setZoom] = useState(6);
 
   const updateCenter = (lat, lng) => () => {
     setCenter({ lat, lng });

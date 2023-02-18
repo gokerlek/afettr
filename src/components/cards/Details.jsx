@@ -1,19 +1,22 @@
-import { Button, Icon, Text } from "../index.js";
+import { Button, Text } from "../index.js";
+import { useCallback, useState } from "react";
+import ReportProblem from "../modal/ReportProblem.jsx";
+import DetailsHeader from "./DetailsHeader.jsx";
 
 const Details = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = useCallback(() => {
+    setIsOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   return (
-    <div className="absolute top-[60px] right-[12px] w-80 flex flex-col  h-fit z-[100] bg-white p-4 rounded-lg shadow-lg ">
-      <div className="flex w-full  min-h-fit  gap-2 border-b border-gray-200 mb-2 pb-2">
-        <Icon purpose="clothes-no-label" />
-
-        <div className="flex flex-col w-full ">
-          <Text className="text-gray-700 text-lg font-medium">Title</Text>
-
-          <Text className="text-gray-500 text-sm font-normal">Address</Text>
-
-          <Text className="text-gray-400 text-sm font-normal">last updated</Text>
-        </div>
-      </div>
+    <div className="absolute top-[60px] right-[12px] w-80 flex flex-col  h-fit z-[10] bg-white p-4 rounded-lg shadow-lg ">
+      <DetailsHeader />
       <div className="flex flex-col w-full border-b border-gray-200 mb-2 pb-2">
         <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">images</Text>
 
@@ -55,6 +58,16 @@ const Details = () => {
       <Button height={40} purpose="black">
         get directions
       </Button>
+
+      <Button
+        onClick={openModal}
+        className="text-red-400 text-sm font-medium mt-2 capitalize flex items-center justify-center gap-1 w-fit mx-auto cursor-pointer hover:text-red-500"
+        height={40}
+        leftIcon="alert">
+        report a problem
+      </Button>
+
+      <ReportProblem isOpen={isOpen} onClose={closeModal} />
     </div>
   );
 };
