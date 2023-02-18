@@ -14,6 +14,27 @@ const Details = () => {
     setIsOpen(false);
   }, []);
 
+  function openMap() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const startLat = position.coords.latitude;
+          const startLng = position.coords.longitude;
+          const destLat = 39.654336;
+          const destLng = 29.308283;
+
+          const url = `https://www.google.com/maps/dir/?api=1&origin=${startLat},${startLng}&destination=${destLat},${destLng}&travelmode=driving`;
+          window.open(url, "_blank");
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      console.log("Geolocation API desteklenmiyor.");
+    }
+  }
+
   return (
     <div className="absolute top-[60px] right-[12px] w-80 flex flex-col  h-fit z-[10] bg-white p-4 rounded-lg shadow-lg ">
       <DetailsHeader />
@@ -55,7 +76,7 @@ const Details = () => {
         </Text>
       </div>
 
-      <Button height={40} purpose="black">
+      <Button height={40} purpose="black" onClick={openMap}>
         get directions
       </Button>
 
