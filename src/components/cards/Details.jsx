@@ -2,7 +2,7 @@ import { Button, Icon, Text } from "../index.js";
 
 const Details = () => {
   return (
-    <div className="absolute top-[10px] left-[405px] w-80 flex flex-col  h-fit z-[100] bg-white p-4 rounded-lg shadow-lg ">
+    <div className="absolute top-[60px] right-[12px] w-80 flex flex-col  h-fit z-[100] bg-white p-4 rounded-lg shadow-lg ">
       <div className="flex w-full  min-h-fit  gap-2 border-b border-gray-200 mb-2 pb-2">
         <Icon purpose="clothes-no-label" />
 

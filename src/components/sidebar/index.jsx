@@ -1,7 +1,7 @@
 import { Button, Text } from "../index.js";
 import Dropdown from "../buttons/Dropdown.jsx";
 import Checkbox from "../buttons/Checkbox.jsx";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 
 const Sidebar = () => {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -9,8 +9,11 @@ const Sidebar = () => {
   const [selectedNeighborhood, setSelectedNeighborhood] = useState(null);
 
   const handleCityChange = (value) => {
-    if (!!selectedCity && value.id === selectedCity.id) return;
-    setSelectedCity(value);
+    if (!!selectedCity && value.id === selectedCity.id) {
+      setSelectedCity(null);
+    } else {
+      setSelectedCity(value);
+    }
     setSelectedDistrict(null);
     setSelectedNeighborhood(null);
   };
@@ -70,7 +73,7 @@ const Sidebar = () => {
               {Array(10)
                 .fill(" ")
                 .map((_, i) => (
-                  <div key={i} className="flex items-center justify-between w-full">
+                  <div key={i} className="flex items-center justify-between w-full -pl-1">
                     <Checkbox label="option 1" />
                     <div className="w-2 h-2 rounded bg-orange-400" />
                   </div>
@@ -80,7 +83,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <Button height={40} purpose="black">
+      <Button height={40} purpose="black" disabled={!!!selectedCity}>
         filter
       </Button>
     </div>

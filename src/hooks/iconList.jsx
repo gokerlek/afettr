@@ -28,6 +28,10 @@ import { ReactComponent as Calendar } from "../assets/icons/header/Calendar.svg"
 import { ReactComponent as Apple } from "../assets/icons/header/Apple.svg";
 import { ReactComponent as Google } from "../assets/icons/header/Google.svg";
 
+import { ReactComponent as List } from "../assets/icons/button/List.svg";
+import { ReactComponent as Map } from "../assets/icons/button/Map.svg";
+import { ReactComponent as MapLight } from "../assets/icons/button/MapLight.svg";
+
 const iconList = (purpose, { width, height, color }) => {
   switch (purpose) {
     //LOGO
@@ -82,6 +86,14 @@ const iconList = (purpose, { width, height, color }) => {
       return <Apple />;
     case "google":
       return <Google />;
+
+    // BUTTONS
+    case "list":
+      return <List />;
+    case "map":
+      return <Map />;
+    case "map light":
+      return <MapLight />;
 
     default:
       return null;

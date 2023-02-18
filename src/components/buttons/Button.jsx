@@ -20,24 +20,47 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
   };
 
   const disabledClassName = {
-    " cursor-not-allowed hover:scale-100": disabled,
+    " cursor-not-allowed hover:bg-opacity-100": disabled,
   };
 
   const containerClassName = {
     black: clsx(
-      "flex items-center justify-center bg-black rounded-lg py-2 px-4 h-7 gap-2 font-medium",
-      " text-white font-medium cursor-pointer text-center text-xs capitalize",
-      " hover:bg-opacity-80",
       disabledClassName,
+      "flex items-center justify-center bg-black rounded-lg py-2 px-4 h-7 gap-2 font-medium",
+      " text-white font-medium  text-center text-xs capitalize",
+      " hover:bg-opacity-80",
       {
         "w-full": !fit,
         "w-fit min-w-fit": fit,
+        "cursor-pointer bg-black": !disabled,
+        "bg-gray-400": disabled,
       }
     ),
     gray: clsx(
       "flex items-center justify-center bg-gray-200 rounded py-2 px-4 h-7 gap-2 font-medium",
       " text-gray-500 font-medium cursor-pointer text-center text-xs capitalize",
       " hover:bg-gray-300",
+      disabledClassName,
+      {
+        "w-full": !fit,
+        "w-fit min-w-fit": fit,
+      }
+    ),
+
+    "dark-gray": clsx(
+      "flex items-center justify-center bg-gray-700 rounded py-2 px-1  h-7 gap-1 font-medium shadow-md",
+      " text-white font-medium cursor-pointer text-center text-xs capitalize",
+      " hover:bg-gray-900",
+      disabledClassName,
+      {
+        "w-full": !fit,
+        "w-fit min-w-fit": fit,
+      }
+    ),
+    "dark-gray text": clsx(
+      "flex items-center justify-center  rounded py-2 px-1  h-7 gap-1 font-medium",
+      " text-gray-700 font-medium cursor-pointer text-center text-xs capitalize",
+      " hover:text-gray-900",
       disabledClassName,
       {
         "w-full": !fit,

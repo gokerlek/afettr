@@ -19,7 +19,7 @@ const pointers = {
     color: "bg-[#0284C7]",
   },
 };
-const Pointer = ({ purpose }) => {
+const Pointer = ({ purpose = "shelter" }) => {
   const { label, icon, color } = pointers[purpose];
 
   return (

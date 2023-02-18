@@ -2,12 +2,15 @@ import { GoogleMap, LoadScript, Marker, MarkerClusterer } from "@react-google-ma
 import { locations, mapContainerStyle } from "./locations.jsx";
 import { useState } from "react";
 import mapStyle from "./mapStayle.jsx";
+import { useMap } from "../../context/MapProvider.jsx";
 
 function createKey(location) {
   return location.lat + location.lng;
 }
 
 const Maps = () => {
+  const { openDetail } = useMap();
+
   const [center, setCenter] = useState({ lat: -28.024, lng: 140.887 });
 
   const [zoom, setZoom] = useState(3);
@@ -15,6 +18,7 @@ const Maps = () => {
   const updateCenter = (lat, lng) => () => {
     setCenter({ lat, lng });
     setZoom(10);
+    openDetail();
   };
 
   return (
@@ -27,6 +31,8 @@ const Maps = () => {
           center={center}
           options={{
             styles: mapStyle,
+            fullscreenControl: false,
+            streetViewControl: false,
           }}>
           <MarkerClusterer>
             {(clusterer) => (

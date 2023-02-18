@@ -24,20 +24,20 @@ const Checkbox = ({ label, initialState, onChange, isChecked, table }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 pl-1">
       <input
         type="checkbox"
         checked={table ? isChecked : checked}
         onChange={handleCheckboxChange}
-        className="w-4 h-4  border border-t500 rounded
-        text-primary
+        className="w-4 h-4  border border-t500 rounded z-[100]
+        text-yellow-500
         cursor-pointer
         appearance-none
-        checked:accent-primary
-        checked:bg-primary
+        checked:accent-yellow-500
+        checked:bg-yellow-500
         bg-white
-        transform transition duration-300 ease-in-out hover:scale-110
-        focus:outline-none focus:ring-transparent checked:hover:bg-primary"
+        transform transition duration-300 ease-in-out
+        focus:outline-none focus:ring-transparent checked:hover:bg-yellow-500"
       />
       {label && <label className="text-sm font-medium text-gray-700 capitalize">{t(label)}</label>}
     </div>
