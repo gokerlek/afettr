@@ -6,6 +6,12 @@ module.exports = {
             fontFamily: {
                 body: ["Inter", "sans-serif"],
             },
+            screens: {
+                axl: { max: "1200px", min: "1001px" },
+                al: { max: "1000px", min: "801px" },
+                am: { max: "800px", min: "501px" },
+                as: { max: "500px", min: "0px" },
+            },
             colors: {},
 
             boxShadow: {

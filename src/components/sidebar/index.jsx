@@ -1,12 +1,14 @@
 import { Button, Text } from "../index.js";
 import Dropdown from "../buttons/Dropdown.jsx";
-import Checkbox from "../buttons/Checkbox.jsx";
 import { useState } from "react";
+import NeededCheck from "../header/NeededCheck.jsx";
+import { needs } from "../../constants.js";
 
 const Sidebar = () => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [selectedDistrict, setSelectedDistrict] = useState(null);
-  const [selectedNeighborhood, setSelectedNeighborhood] = useState(null);
+
+  const needOptions = Object.values(needs);
 
   const handleCityChange = (value) => {
     if (!!selectedCity && value.id === selectedCity.id) {
@@ -15,22 +17,15 @@ const Sidebar = () => {
       setSelectedCity(value);
     }
     setSelectedDistrict(null);
-    setSelectedNeighborhood(null);
   };
 
   const handleDistrictChange = (value) => {
     if (!!selectedDistrict && value.id === selectedDistrict.id) return;
     setSelectedDistrict(value);
-    setSelectedNeighborhood(null);
-  };
-
-  const handleNeighborhoodChange = (value) => {
-    if (!!selectedNeighborhood && value.id === selectedNeighborhood.id) return;
-    setSelectedNeighborhood(value);
   };
 
   return (
-    <div className="flex flex-col gap-5 min-w-[270px] h-full">
+    <div className="flex flex-col gap-5 min-w-[270px] h-full as:hidden">
       <div className="w-full h-full rounded-lg border border-gray-200 p-4">
         <div className="flex flex-col h-full w-full  gap-5 divide-gray-200 divide-y">
           <div className="flex flex-col w-full">
@@ -54,30 +49,16 @@ const Sidebar = () => {
                 setSelection={handleDistrictChange}
                 selection={selectedDistrict}
               />
-              <Dropdown
-                options={[
-                  { id: 111, label: "option 1" },
-                  { id: 222, label: "option 2" },
-                ]}
-                placeholder={"select a neighborhood"}
-                setSelection={handleNeighborhoodChange}
-                selection={selectedNeighborhood}
-              />
             </div>
           </div>
 
           <div className=" relative  flex flex-col w-full  h-full pt-3">
             <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">need</Text>
 
-            <div className=" absolute inset-0 top-[40px] flex flex-col gap-2 w-full  overflow-y-auto no-scrollbar">
-              {Array(10)
-                .fill(" ")
-                .map((_, i) => (
-                  <div key={i} className="flex items-center justify-between w-full -pl-1">
-                    <Checkbox label="option 1" />
-                    <div className="w-2 h-2 rounded bg-orange-400" />
-                  </div>
-                ))}
+            <div className=" absolute inset-0 top-[40px] flex flex-col  w-full  overflow-y-auto no-scrollbar">
+              {needOptions.map((need, i) => {
+                return <NeededCheck key={i} data={need} />;
+              })}
             </div>
           </div>
         </div>

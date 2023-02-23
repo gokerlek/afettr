@@ -24,7 +24,7 @@ const Checkbox = ({ label, initialState, onChange, isChecked, table }) => {
   const { t } = useTranslation();
 
   return (
-    <div className="flex items-center gap-2 pl-1">
+    <div className="flex items-center gap-2 pl-1 ">
       <input
         type="checkbox"
         checked={table ? isChecked : checked}

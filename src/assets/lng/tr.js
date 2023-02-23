@@ -1,12 +1,22 @@
 export default {
   Send: "Gönder",
-  shelter: "barınma",
   "my location": "konumum",
-  "safe spot": "güvenli nokta",
+
+  shelter: "barınma",
   wc: "Tuvalet",
+  "animal shelter": "hayvan barınağı",
+  food: "yemek",
+  "safe spot": "güvenli nokta",
+  vet: "Veteriner",
+  pharmacy: "eczane",
+  hospital: "hastane",
+  clothes: "giysi",
+  charge: "şarj",
+  hygiene: "hijyen",
+  debris: "enkaz",
+
   "safe area at night": "gece güvenli alan",
   "soup kitchen": "aşevi",
-  clothes: "giysi",
   "header-info": `
   Afettr, olası afet durumlarında sahada çalışan gönüllülere, alandaki ihtiyaçların belirlenebilmesi ve kısa sürede olası sorunlara çözüm bulunabilmesi için geliştirilmiştir. Gönüllü olmayan / sahada çalışmayan kullanıcıların kayıt oluşturmaması önerilir, bu kayıtlar silinecektir. Uygulamayı **indirmek** ve **üye olmak** için ziyaret ediniz.`,
 
@@ -34,4 +44,5 @@ export default {
   "report a problem": "sorun bildir",
   forward: "İlet",
   "You can enter detailed information.": "Detaylı bilgi girebilirsiniz.",
+  "Become a Volunteer Editor": "Gönüllü Editör Ol",
 };

@@ -4,8 +4,9 @@ import { useState } from "react";
 import mapStyle from "./mapStayle.jsx";
 import { useMap } from "../../context/MapProvider.jsx";
 
-function createKey(location) {
-  return location.lat + location.lng;
+function createKey() {
+  // create a unique key for each location
+  return Math.random().toString(36).substr(2, 9);
 }
 
 const Maps = () => {
@@ -33,8 +34,14 @@ const Maps = () => {
             styles: mapStyle,
             fullscreenControl: false,
             streetViewControl: false,
+            mapTypeControl: false,
+            zoomControl: false,
           }}>
-          <MarkerClusterer>
+          <MarkerClusterer
+            gridSize={10}
+            onMouseOver={(clusterer) => {
+              console.log(clusterer.getBounds());
+            }}>
             {(clusterer) => (
               <>
                 {locations?.map((location) => (

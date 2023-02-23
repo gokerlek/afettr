@@ -3,6 +3,8 @@ import Shelter from "../../assets/icons/pointers/Shelter.svg";
 
 export const locations = [
   { lat: -31.56391, lng: 147.154312, icon: WC },
+  { lat: -31.56391, lng: 147.154312, icon: WC },
+  { lat: -31.56391, lng: 147.154312, icon: Shelter },
   { lat: -33.718234, lng: 150.363181, icon: Shelter },
   { lat: -33.727111, lng: 150.371124 },
   { lat: -33.848588, lng: 151.209834 },

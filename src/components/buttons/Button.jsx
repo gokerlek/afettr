@@ -26,7 +26,7 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
   const containerClassName = {
     black: clsx(
       disabledClassName,
-      "flex items-center justify-center bg-black rounded-lg py-2 px-4 h-7 gap-2 font-medium",
+      "flex items-center justify-center bg-black rounded-md py-2 px-4 h-7 gap-2 font-medium",
       " text-white font-medium  text-center text-xs capitalize",
       {
         "w-full": !fit,
@@ -36,7 +36,7 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
       }
     ),
     gray: clsx(
-      "flex items-center justify-center bg-gray-200 rounded py-2 px-4 h-7 gap-2 font-medium",
+      "flex items-center justify-center bg-gray-200 rounded-md py-2 px-4 h-7 gap-2 font-medium",
       " text-gray-500 font-medium cursor-pointer text-center text-xs capitalize",
       " hover:bg-gray-300",
       disabledClassName,
@@ -47,7 +47,7 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
     ),
 
     "dark-gray": clsx(
-      "flex items-center justify-center bg-gray-700 rounded py-2 px-1  h-7 gap-1 font-medium shadow-md",
+      "flex items-center justify-center bg-gray-700 rounded-md py-2 px-1  h-7 gap-1 font-medium shadow-md",
       " text-white font-medium cursor-pointer text-center text-xs capitalize",
       " hover:bg-gray-900",
       disabledClassName,
@@ -57,7 +57,7 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
       }
     ),
     "dark-gray text": clsx(
-      "flex items-center justify-center  rounded py-2 px-1  h-7 gap-1 font-medium",
+      "flex items-center justify-center  rounded-md py-2 px-1  h-7 gap-1 font-medium",
       " text-gray-700 font-medium cursor-pointer text-center text-xs capitalize",
       " hover:text-gray-900",
       disabledClassName,

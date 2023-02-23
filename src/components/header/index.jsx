@@ -1,16 +1,21 @@
 import Icon from "../Icon.jsx";
 import { Button, Text } from "../index.js";
+import useToggle from "../../hooks/useToggle.jsx";
 
 const Header = () => {
-  const register = () => {};
+  const [isOpen, setIsOpen] = useToggle(false);
+  const beVolunteer = () => {};
+  const openMenu = () => {
+    setIsOpen();
+  };
 
-  const login = () => {};
+  console.log(isOpen);
 
   return (
-    <header className="flex-1 h-16 flex gap-5 mx-5">
-      <Icon purpose="logo" className="w-[270px] flex items-center" />
+    <header className="flex-1 h-16 flex gap-5 mx-5 as:justify-center as:relative">
+      <Icon purpose="logo" className="w-[270px] as:w-fit flex items-center" />
 
-      <div className="flex flex-row justify-between items-center h-full flex-1 ">
+      <div className="flex flex-row justify-between items-center h-full flex-1 as:hidden">
         <div className="flex flex-row justify-start items-center h-full ">
           <Text className="text-gray-500 text-[10px] font-[400] leading-none max-w-xl " markdown>
             header-info
@@ -32,15 +37,16 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex flex-row gap-5 items-center">
-          <Text className="text-xs min-w-fit font-medium capitalize cursor-pointer hover:underline" onClick={login}>
-            login
-          </Text>
-          <Button purpose="black" fit onClick={register}>
-            register
-          </Button>
-        </div>
+        <Button purpose="black" fit onClick={beVolunteer}>
+          Become a Volunteer Editor
+        </Button>
       </div>
+
+      <Icon
+        purpose={isOpen ? "close menu" : "menu"}
+        className="absolute inset-y-0 right-0 items-center as:flex hidden"
+        onClick={openMenu}
+      />
     </header>
   );
 };

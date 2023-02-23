@@ -35,6 +35,9 @@ import { ReactComponent as Close } from "../assets/icons/button/Close.svg";
 
 import { ReactComponent as Alert } from "../assets/icons/warining/Alert.svg";
 
+import { ReactComponent as Menu } from "../assets/icons/mobile/Menu.svg";
+import { ReactComponent as CloseMenu } from "../assets/icons/mobile/CloseMenu.svg";
+
 const iconList = (purpose, { width, height, color }) => {
   switch (purpose) {
     //LOGO
@@ -103,6 +106,12 @@ const iconList = (purpose, { width, height, color }) => {
     // WARNING
     case "alert":
       return <Alert />;
+
+    // MOBILE
+    case "menu":
+      return <Menu />;
+    case "close menu":
+      return <CloseMenu />;
 
     default:
       return null;

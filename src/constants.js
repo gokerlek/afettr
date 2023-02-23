@@ -1,70 +1,62 @@
-import paths from "./paths.js";
-
-export const constants = {
-  productManagement: "product-management",
-  ingredientOptions: "ingredient-options",
-  firmProfile: "firm-profile",
+export const needs = {
+  shelter: {
+    label: "shelter",
+    icon: "shelter",
+    bg_color: "bg-orange-500",
+  },
+  wc: {
+    label: "wc",
+    icon: "wc",
+    bg_color: "bg-blue-400",
+  },
+  animal_shelter: {
+    label: "animal shelter",
+    icon: "animal_shelter",
+    bg_color: "bg-blue-800",
+  },
+  food: {
+    label: "food",
+    icon: "food",
+    bg_color: "bg-purple-500",
+  },
+  safe_spot: {
+    label: "safe spot",
+    icon: "safe_spot",
+    bg_color: "bg-green-500",
+  },
+  vet: {
+    label: "vet",
+    icon: "vet",
+    bg_color: "bg-yellow-400",
+  },
+  pharmacy: {
+    label: "pharmacy",
+    icon: "pharmacy",
+    bg_color: "bg-red-500",
+  },
+  hospital: {
+    label: "hospital",
+    icon: "hospital",
+    bg_color: "bg-red-600",
+  },
+  clothes: {
+    label: "clothes",
+    icon: "clothes",
+    bg_color: "bg-pink-500",
+  },
+  charge: {
+    label: "charge",
+    icon: "charge",
+    bg_color: "bg-orange-500",
+  },
+  hygiene: {
+    label: "hygiene",
+    icon: "hygiene",
+    bg_color: "bg-blue-500",
+  },
+  debris: {
+    label: "debris",
+    icon: "debris",
+    bg_color: "bg-indigo-500",
+  },
 };
-
-const permissions = {
-  user: 100,
-};
-
-export const sidebarItems = [
-  {
-    id: 1,
-    name: "overview",
-    path: paths.main,
-    icon: "overview",
-    "icon active": "overview active",
-    permissions: [permissions.user],
-  },
-  {
-    id: 2,
-    name: "jobs",
-    path: paths.jobs,
-    icon: "jobs",
-    "icon active": "jobs active",
-    permissions: [permissions.user],
-  },
-  {
-    id: 3,
-    name: "candidates",
-    path: paths.candidates,
-    icon: "candidates",
-    "icon active": "candidates active",
-    permissions: [permissions.user],
-  },
-  {
-    id: 4,
-    name: "talent pools",
-    path: paths.talent_pools,
-    icon: "talent-pools",
-    "icon active": "talent-pools active",
-    permissions: [permissions.user],
-  },
-  {
-    id: 5,
-    name: "reports",
-    path: paths.reports,
-    icon: "reports",
-    "icon active": "reports active",
-    permissions: [permissions.user],
-  },
-  {
-    id: 6,
-    name: "campaigns",
-    path: paths.campaigns,
-    icon: "campaigns",
-    "icon active": "campaigns active",
-    permissions: [permissions.user],
-  },
-  {
-    id: 7,
-    name: "settings",
-    path: paths.settings,
-    icon: "settings",
-    "icon active": "settings active",
-    permissions: [permissions.user],
-  },
-];
