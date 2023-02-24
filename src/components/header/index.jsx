@@ -1,18 +1,17 @@
 import Icon from "../Icon.jsx";
 import { Button, Text } from "../index.js";
 import useToggle from "../../hooks/useToggle.jsx";
+import BeEditorDrawer from "../modal/drawwer/BeEditorDrawer.jsx";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useToggle(false);
-  const beVolunteer = () => {};
+  const beEditor = () => {};
   const openMenu = () => {
     setIsOpen();
   };
 
-  console.log(isOpen);
-
   return (
-    <header className="flex-1 h-16 flex gap-5 mx-5 as:justify-center as:relative">
+    <header className="flex-1 h-16 flex gap-5 mx-5 as:px-5 as:mx-0 as:justify-center as:relative z-[1001] bg-white">
       <Icon purpose="logo" className="w-[270px] as:w-fit flex items-center" />
 
       <div className="flex flex-row justify-between items-center h-full flex-1 as:hidden">
@@ -37,16 +36,18 @@ const Header = () => {
           </div>
         </div>
 
-        <Button purpose="black" fit onClick={beVolunteer}>
+        <Button purpose="black" fit onClick={beEditor} text={"text-xs"}>
           Become a Volunteer Editor
         </Button>
       </div>
 
       <Icon
         purpose={isOpen ? "close menu" : "menu"}
-        className="absolute inset-y-0 right-0 items-center as:flex hidden"
+        className="absolute inset-y-0 right-[20px] items-center as:flex hidden"
         onClick={openMenu}
       />
+
+      <BeEditorDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
     </header>
   );
 };

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { Text, Icon } from "../index.js";
 import clsx from "clsx";
 
-const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fit, height, disabled }) => {
+const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fit, height, disabled, text }) => {
   const { t } = useTranslation();
   const leftIconElement = {
     purpose: typeof leftIcon === "object" ? leftIcon.purpose : leftIcon,
@@ -27,7 +27,8 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
     black: clsx(
       disabledClassName,
       "flex items-center justify-center bg-black rounded-md py-2 px-4 h-7 gap-2 font-medium",
-      " text-white font-medium  text-center text-xs capitalize",
+      " text-white font-medium  text-center capitalize",
+      text ?? "text-sm",
       {
         "w-full": !fit,
         "w-fit min-w-fit": fit,
