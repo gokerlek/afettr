@@ -2,10 +2,10 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Details from "../../cards/Details.jsx";
 
-const DetailsDrawer = ({ openDetailCard, setOpenDetailCard }) => {
+const DetailsDrawer = ({ openDetailCard, setOpenDetailCard, openModal }) => {
   return (
     <Transition.Root show={openDetailCard} as={Fragment}>
-      <Dialog as="div" className="relative z-[10000] " onClose={setOpenDetailCard}>
+      <Dialog as="div" className="relative z-[1001] " onClose={setOpenDetailCard}>
         <Transition.Child
           as={Fragment}
           enter="ease-in-out duration-500"
@@ -28,7 +28,7 @@ const DetailsDrawer = ({ openDetailCard, setOpenDetailCard }) => {
             leaveTo="translate-y-full">
             <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md bg-white rounded">
               <div className="flex  flex-col overflow-y-scroll  px-4 pb-4 pt-3  gap-4">
-                <Details setOpenDetailCard={setOpenDetailCard} />
+                <Details setOpenDetailCard={setOpenDetailCard} openModal={openModal} />
               </div>
             </Dialog.Panel>
           </Transition.Child>

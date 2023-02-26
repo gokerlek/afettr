@@ -1,19 +1,7 @@
 import { Button, Text } from "../index.js";
-import { useCallback, useState } from "react";
-import ReportProblem from "../modal/ReportProblem.jsx";
 import DetailsHeader from "./DetailsHeader.jsx";
 
-const Details = ({ setOpenDetailCard }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = useCallback(() => {
-    setIsOpen(true);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setIsOpen(false);
-  }, []);
-
+const Details = ({ setOpenDetailCard, openModal }) => {
   function openMap() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -41,7 +29,7 @@ const Details = ({ setOpenDetailCard }) => {
       <div className="flex flex-col w-full border-b border-gray-200 mb-2 pb-2">
         <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">images</Text>
 
-        <div className=" w-[304 px] h-16 overflow-x-auto mr-[-16px] flex  gap-2 no-scrollbar">
+        <div className=" h-16 overflow-x-auto mr-[-16px] flex  gap-2 no-scrollbar">
           {Array(10)
             .fill("")
             .map((_, i) => (
@@ -87,8 +75,6 @@ const Details = ({ setOpenDetailCard }) => {
         leftIcon="alert">
         report a problem
       </Button>
-
-      <ReportProblem isOpen={isOpen} onClose={closeModal} />
     </div>
   );
 };

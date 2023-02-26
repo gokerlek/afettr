@@ -5,6 +5,8 @@ import mapStyle from "./mapStayle.jsx";
 import DetailsDrawer from "../modal/drawwer/DetailsDrawer.jsx";
 import Details from "../cards/Details.jsx";
 import useWindowsSize from "../../hooks/useWindowsSize.jsx";
+import { BREAKPOINTS } from "../../constants.js";
+import ReportProblem from "../modal/ReportProblem.jsx";
 
 function createKey() {
   // create a unique key for each location
@@ -14,7 +16,21 @@ function createKey() {
 const Maps = () => {
   const { width } = useWindowsSize();
 
-  const drawerCondition = width < 500;
+  const drawerCondition = width < BREAKPOINTS.MOBILE;
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+    if (drawerCondition) {
+      console.log("drawerCondition", drawerCondition);
+      setOpenDetailCard(false);
+    }
+  };
+
+  const closeModal = useCallback(() => {
+    setIsOpen(false);
+  }, []);
 
   const [openDetailCard, setOpenDetailCard] = useState(false);
 
@@ -34,13 +50,17 @@ const Maps = () => {
 
   return (
     <div className="w-full h-full">
-      {drawerCondition && <DetailsDrawer openDetailCard={openDetailCard} setOpenDetailCard={setOpenDetailCard} />}
+      {drawerCondition && (
+        <DetailsDrawer openDetailCard={openDetailCard} setOpenDetailCard={setOpenDetailCard} openModal={openModal} />
+      )}
 
       {!drawerCondition && openDetailCard && (
-        <div className=" fixed top-[120px] right-[32px] bg-red-400  flex max-w-full z-[10000000] ">
-          <Details setOpenDetailCard={setOpenDetailCard} />
+        <div className=" fixed top-[120px] right-[32px]  flex max-w-full z-[10] ">
+          <Details setOpenDetailCard={setOpenDetailCard} openModal={openModal} />
         </div>
       )}
+
+      <ReportProblem isOpen={isOpen} onClose={closeModal} setOpenDetailCard={setOpenDetailCard} />
 
       <LoadScript googleMapsApiKey={"AIzaSyDWqZDg2344AcAvXFFsqLDcbzXpO7voqeM"}>
         <GoogleMap

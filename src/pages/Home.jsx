@@ -6,6 +6,7 @@ import { useMap } from "../context/MapProvider.jsx";
 import { Button } from "../components/index.js";
 import FilterDrawer from "../components/modal/drawwer/FilterDrawer.jsx";
 import useWindowsSize from "../hooks/useWindowsSize.jsx";
+import { BREAKPOINTS } from "../constants.js";
 
 const Home = () => {
   const { openList } = useMap();
@@ -17,7 +18,7 @@ const Home = () => {
 
   const { width } = useWindowsSize();
 
-  const drawerCondition = width < 500;
+  const drawerCondition = width < BREAKPOINTS.MOBILE;
 
   return (
     <div className="relative flex gap-5  as:gap-3 h-full as:flex-col">

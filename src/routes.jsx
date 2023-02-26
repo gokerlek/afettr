@@ -4,6 +4,7 @@ import paths from "./paths.js";
 import NoMatch from "./pages/NoMatch.jsx";
 import MainLayout from "./layouts/main.jsx";
 import Home from "./pages/Home.jsx";
+import EditorLayout from "./layouts/editor.jsx";
 
 let routes = [
   // {
@@ -13,15 +14,11 @@ let routes = [
 
   {
     element: <MainLayout />,
-    children: [
-      { path: paths.main, element: <Home /> },
-      { path: paths.jobs, element: <Home /> },
-      { path: paths.candidates, element: <Home /> },
-      { path: paths.talent_pools, element: <Home /> },
-      { path: paths.reports, element: <Home /> },
-      { path: paths.campaigns, element: <Home /> },
-      { path: paths.settings, element: <Home /> },
-    ],
+    children: [{ path: paths.main, element: <Home /> }],
+  },
+  {
+    element: <EditorLayout />,
+    children: [{ path: paths.editor, element: <Home /> }],
   },
   {
     path: "*",

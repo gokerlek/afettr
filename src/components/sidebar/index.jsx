@@ -11,6 +11,20 @@ const Sidebar = () => {
 
   const needOptions = Object.values(needs);
 
+  fetch("http://afettr.com/api/address.php?type=listcity", {
+    method: "GET",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-type": "multipart/form-data",
+    },
+    // mode: "no-cors",
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => {
+      console.error(error);
+    });
+
   const handleCityChange = (value) => {
     if (!!selectedCity && value.id === selectedCity.id) {
       setSelectedCity(null);

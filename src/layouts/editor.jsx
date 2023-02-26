@@ -1,8 +1,14 @@
-import { Link, Outlet } from "react-router-dom";
 import * as React from "react";
+import { Outlet } from "react-router-dom";
 import Header from "../components/header/index.jsx";
+import useWindowsSize from "../hooks/useWindowsSize.jsx";
+import { BREAKPOINTS } from "../constants.js";
 
-const AuthLayout = () => {
+const EditorLayout = () => {
+  const { width } = useWindowsSize();
+
+  const sidebarCondition = width > BREAKPOINTS.MOBILE;
+
   return (
     <div className="w-screen h-screen ">
       <Header editor />
@@ -16,4 +22,4 @@ const AuthLayout = () => {
   );
 };
 
-export default AuthLayout;
+export default EditorLayout;

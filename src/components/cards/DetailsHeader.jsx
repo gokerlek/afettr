@@ -24,7 +24,7 @@ const DetailsHeader = ({ data, setOpenDetailCard }) => {
         </Text>
       </div>
 
-      <Icon purpose="close" className="absolute right-0 top-0" onClick={closeDetail} />
+      {!!setOpenDetailCard && <Icon purpose="close" className="absolute right-0 top-0" onClick={closeDetail} />}
     </div>
   );
 };

@@ -3,11 +3,12 @@ import { Outlet } from "react-router-dom";
 import Header from "../components/header/index.jsx";
 import Sidebar from "../components/sidebar/index.jsx";
 import useWindowsSize from "../hooks/useWindowsSize.jsx";
+import { BREAKPOINTS } from "../constants.js";
 
 const MainLayout = () => {
   const { width } = useWindowsSize();
 
-  const sidebarCondition = width > 500;
+  const sidebarCondition = width > BREAKPOINTS.MOBILE;
 
   return (
     <div className="w-screen h-screen ">

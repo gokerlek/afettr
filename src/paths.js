@@ -1,11 +1,6 @@
 const paths = {
   main: "/",
-  jobs: "/jobs",
-  candidates: "/candidates",
-  talent_pools: "/talent-pools",
-  reports: "/reports",
-  campaigns: "/campaigns",
-  settings: "/settings",
+  editor: "/editor",
 };
 
 export default paths;

@@ -60,3 +60,7 @@ export const needs = {
     bg_color: "bg-indigo-500",
   },
 };
+
+export const BREAKPOINTS = {
+  MOBILE: 500,
+};
