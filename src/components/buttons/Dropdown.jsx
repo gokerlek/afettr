@@ -7,7 +7,6 @@
  *   ];
  */
 
-import React, { useState } from "react";
 import { Listbox } from "@headlessui/react";
 import Icon from "../Icon.jsx";
 import clsx from "clsx";
@@ -19,7 +18,7 @@ const Dropdown = ({ options, placeholder, selection, setSelection }) => {
       <div className="absolute inset-x-0 top-0 w-full flex items-center">
         <Listbox value={selection} onChange={(e) => setSelection(e)} by={"id"}>
           <div className="flex flex-col w-full min-h-[40px] border border-gray-200 rounded">
-            <Listbox.Button>
+            <Listbox.Button className="focus:outline-none">
               {({ open }) => (
                 <div className="flex h-10 items-center  justify-between  px-4">
                   <Text className=" text-gray-500 font-400 text-sm capitalize">

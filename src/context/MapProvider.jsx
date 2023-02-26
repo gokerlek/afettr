@@ -6,10 +6,6 @@ const defaultValues = {
   setOpenList: () => {},
   open: () => {},
   close: () => {},
-  openDetailCard: false,
-  setOpenDetailCard: () => {},
-  openDetail: () => {},
-  closeDetail: () => {},
 };
 
 const MapContext = createContext(defaultValues);
@@ -28,28 +24,14 @@ export const MapProvider = ({ children }) => {
     setOpenList(false);
   }, []);
 
-  const [openDetailCard, setOpenDetailCard] = useState(false);
-
-  const openDetail = useCallback(() => {
-    setOpenDetailCard(true);
-  }, []);
-
-  const closeDetail = useCallback(() => {
-    setOpenDetailCard(false);
-  }, []);
-
   const values = useMemo(() => {
     return {
       openList,
       setOpenList,
       open,
       close,
-      openDetailCard,
-      setOpenDetailCard,
-      openDetail,
-      closeDetail,
     };
-  }, [openList, setOpenList, open, close, openDetailCard, setOpenDetailCard, openDetail, closeDetail]);
+  }, [openList, setOpenList, open, close]);
 
   return <MapContext.Provider value={values}>{children}</MapContext.Provider>;
 };

@@ -20,14 +20,13 @@ import clsx from "clsx";
 const Icon = ({ purpose = "", width, height, color, className, onClick }) => {
   return (
     <div
-      className={clsx(className, { "cursor-pointer": !!onClick })}
+      className={clsx(className, "active:bg-transparent", { "cursor-pointer": !!onClick })}
       onClick={onClick}
       style={{
         width: width,
         height: height,
         color: color,
-      }}
-    >
+      }}>
       {iconList(purpose, { width: width, height: height, color: color })}
     </div>
   );

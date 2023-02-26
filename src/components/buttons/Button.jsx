@@ -27,12 +27,25 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
     black: clsx(
       disabledClassName,
       "flex items-center justify-center bg-black rounded-md py-2 px-4 h-7 gap-2 font-medium",
-      " text-white font-medium  text-center capitalize",
       text ?? "text-sm",
+      " text-white font-medium  text-center capitalize",
       {
         "w-full": !fit,
         "w-fit min-w-fit": fit,
         "cursor-pointer bg-black hover:bg-opacity-80": !disabled,
+        "bg-gray-400": disabled,
+      }
+    ),
+
+    black_2: clsx(
+      disabledClassName,
+      "flex items-center justify-between bg-black rounded-md py-2 px-4 h-7 gap-2 font-medium active:no-active",
+      text ?? "text-sm",
+      " text-gray-300 font-medium   capitalize",
+      {
+        "w-full": !fit,
+        "w-fit min-w-fit": fit,
+        "cursor-pointer bg-black ": !disabled,
         "bg-gray-400": disabled,
       }
     ),

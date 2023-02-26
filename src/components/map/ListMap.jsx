@@ -6,7 +6,7 @@ const ListMap = () => {
   const { open, close, openList } = useMap();
 
   return (
-    <div className="flex items-center p-1 bg-white border border-gray-200 w-fit h-fit gap-2 absolute top-[12px] right-[12px] z-[100]">
+    <div className="flex items-center p-1 bg-white border border-gray-200 rounded w-fit h-fit gap-2 absolute top-[12px] right-[12px] z-[100] as:hidden">
       <Button fit leftIcon="list" purpose={clsx("dark-gray", { text: !openList })} onClick={open}>
         list
       </Button>

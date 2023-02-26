@@ -3,6 +3,7 @@ import Dropdown from "../buttons/Dropdown.jsx";
 import { useState } from "react";
 import NeededCheck from "../header/NeededCheck.jsx";
 import { needs } from "../../constants.js";
+import clsx from "clsx";
 
 const Sidebar = () => {
   const [selectedCity, setSelectedCity] = useState(null);
@@ -25,8 +26,8 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex flex-col gap-5 min-w-[270px] h-full as:hidden">
-      <div className="w-full h-full rounded-lg border border-gray-200 p-4">
+    <div className={clsx("flex flex-col gap-5 min-w-[270px] h-full ")}>
+      <div className="w-full h-full  rounded-lg border border-gray-200 p-4">
         <div className="flex flex-col h-full w-full  gap-5 divide-gray-200 divide-y">
           <div className="flex flex-col w-full">
             <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">filter map</Text>

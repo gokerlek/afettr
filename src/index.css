@@ -37,4 +37,9 @@
     @apply text-3xl font-medium;
 }
 
+body {
+    @apply font-body;
+    touch-action: manipulation;
+}
+
 

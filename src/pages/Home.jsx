@@ -1,20 +1,35 @@
+import { useCallback, useState } from "react";
 import Maps from "../components/map/Maps.jsx";
-import Details from "../components/cards/Details.jsx";
 import ListMap from "../components/map/ListMap.jsx";
 import List from "../components/map/List.jsx";
 import { useMap } from "../context/MapProvider.jsx";
+import { Button } from "../components/index.js";
+import FilterDrawer from "../components/modal/drawwer/FilterDrawer.jsx";
+import useWindowsSize from "../hooks/useWindowsSize.jsx";
 
 const Home = () => {
-  const { openList, openDetailCard } = useMap();
+  const { openList } = useMap();
+  const [open, setOpen] = useState(false);
 
-  console.log(openDetailCard);
+  const openFilter = useCallback(() => {
+    setOpen(true);
+  }, [setOpen]);
+
+  const { width } = useWindowsSize();
+
+  const drawerCondition = width < 500;
 
   return (
-    <div className="relative flex gap-5 h-full">
+    <div className="relative flex gap-5  as:gap-3 h-full as:flex-col">
       {openList && <List />}
 
-      {openDetailCard && <Details />}
       <ListMap />
+      <div className="as:block hidden">
+        <Button rightIcon="filter" purpose="black_2" height={36} onClick={openFilter}>
+          filter map
+        </Button>
+        {drawerCondition && <FilterDrawer isOpen={open} setIsOpen={setOpen} />}
+      </div>
       <Maps />
     </div>
   );

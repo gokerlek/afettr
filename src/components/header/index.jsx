@@ -43,7 +43,7 @@ const Header = () => {
 
       <Icon
         purpose={isOpen ? "close menu" : "menu"}
-        className="absolute inset-y-0 right-[20px] items-center as:flex hidden"
+        className="absolute inset-y-0 right-[20px] items-center as:flex hidden h-fit my-auto"
         onClick={openMenu}
       />
 

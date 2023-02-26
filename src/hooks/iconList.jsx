@@ -32,6 +32,8 @@ import { ReactComponent as List } from "../assets/icons/button/List.svg";
 import { ReactComponent as Map } from "../assets/icons/button/Map.svg";
 import { ReactComponent as MapLight } from "../assets/icons/button/MapLight.svg";
 import { ReactComponent as Close } from "../assets/icons/button/Close.svg";
+import { ReactComponent as Cross } from "../assets/icons/button/Cross.svg";
+import { ReactComponent as Filter } from "../assets/icons/button/Filter.svg";
 
 import { ReactComponent as Alert } from "../assets/icons/warining/Alert.svg";
 
@@ -102,6 +104,10 @@ const iconList = (purpose, { width, height, color }) => {
       return <MapLight />;
     case "close":
       return <Close />;
+    case "cross":
+      return <Cross />;
+    case "filter":
+      return <Filter />;
 
     // WARNING
     case "alert":

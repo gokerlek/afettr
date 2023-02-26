@@ -32,7 +32,7 @@ const BeEditorDrawer = ({ isOpen, setIsOpen }) => {
                 leaveFrom="-translate-y-0"
                 leaveTo="-translate-y-full">
                 <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md bg-white">
-                  <div className="flex h-full flex-col overflow-y-scroll  px-4 pb-4 shadow-xl gap-4">
+                  <div className="flex h-full flex-col overflow-y-scroll  px-4 pb-4  gap-4">
                     <Button height={42} purpose="black" onClick={beEditor}>
                       Become a Volunteer Editor
                     </Button>
@@ -47,11 +47,11 @@ const BeEditorDrawer = ({ isOpen, setIsOpen }) => {
                           href="#"
                           target="_blank"
                           rel="noreferrer noopener"
-                          className="w-6 cursor-pointer focus:ring-0 focus:border-0 focus:outline-none">
+                          className="w-7 cursor-pointer focus:ring-0 focus:border-0 focus:outline-none">
                           <Icon purpose="apple" />
                         </a>
 
-                        <a href="#" target="_blank" rel="noreferrer noopener" className="w-6 cursor-pointer">
+                        <a href="#" target="_blank" rel="noreferrer noopener" className="w-7 cursor-pointer">
                           <Icon purpose="google" />
                         </a>
 

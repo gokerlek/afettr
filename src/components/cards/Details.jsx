@@ -3,7 +3,7 @@ import { useCallback, useState } from "react";
 import ReportProblem from "../modal/ReportProblem.jsx";
 import DetailsHeader from "./DetailsHeader.jsx";
 
-const Details = () => {
+const Details = ({ setOpenDetailCard }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = useCallback(() => {
@@ -36,8 +36,8 @@ const Details = () => {
   }
 
   return (
-    <div className="absolute top-[60px] right-[12px] w-80 flex flex-col  h-fit z-[10] bg-white p-4 rounded-lg shadow-lg ">
-      <DetailsHeader />
+    <div className=" w-80 as:w-full flex flex-col  h-fit z-[10] bg-white p-4 as:px-0 rounded-lg shadow-lg as:shadow-none ">
+      <DetailsHeader setOpenDetailCard={setOpenDetailCard} />
       <div className="flex flex-col w-full border-b border-gray-200 mb-2 pb-2">
         <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">images</Text>
 
