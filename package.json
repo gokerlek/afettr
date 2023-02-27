@@ -24,7 +24,9 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.1",
     "react-i18next": "^12.1.5",
+    "react-input-mask": "^2.0.4",
     "react-markdown": "^8.0.5",
+    "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^6.8.1",
     "yup": "^1.0.0"
   },
