@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Button, Text } from "../../components/index.js";
 import InputMask from "react-input-mask";
@@ -6,6 +6,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import clsx from "clsx";
 import PhoneInput from "react-phone-input-2";
+import { useNavigate } from "react-router-dom";
+import paths from "../../paths.js";
+import ModalContainer from "../../components/modal/ModalContainer.jsx";
+import Icon from "../../components/Icon.jsx";
 
 const inputs = {
   name: {
@@ -66,7 +70,7 @@ const inputs = {
     required: "Lütfen kullanım koşullarını kabul ediniz",
   },
 };
-const Signup = () => {
+const Signup = (callback, deps) => {
   const {
     register,
     handleSubmit,
@@ -88,6 +92,29 @@ const Signup = () => {
       })
     ),
   });
+  const navigate = useNavigate();
+  const route_login = () => {
+    navigate(paths.login);
+  };
+
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+  const [openConditionsModal, setOpenConditionsModal] = useState(false);
+
+  const openConditions = useCallback(() => {
+    setOpenConditionsModal(true);
+  }, [setOpenConditionsModal]);
+
+  const closeConditions = useCallback(() => {
+    setOpenConditionsModal(false);
+  }, [setOpenConditionsModal]);
+
+  const acceptConditions = useCallback(() => {
+    setIsCheckboxChecked(true);
+    setOpenConditionsModal(false);
+  }, [setOpenConditionsModal, setIsCheckboxChecked]);
+  const handleCheckboxChange = (e) => {
+    setIsCheckboxChecked(!!e.target.checked);
+  };
   const onSubmit = (data) => console.log(data);
 
   const inputClassName = (error) =>
@@ -161,13 +188,12 @@ const Signup = () => {
             <select
               className={inputClassName(errors[inputs.education.name])}
               id="education"
+              defaultValue="Üniversite"
               {...register(inputs.education.name, { required: inputs.education.required })}>
               <option value="ilk okul">İlk Okul</option>
               <option value="orta okul">Orta Okul</option>
               <option value="lise">Lise</option>
-              <option value="üniversite" selected>
-                Üniversite
-              </option>
+              <option value="üniversite">Üniversite</option>
               <option value="yüksek lisans">Yüksek Lisans</option>
               <option value="doktora">Doktora</option>
             </select>
@@ -221,6 +247,8 @@ const Signup = () => {
 
         <div className="flex gap-2 items-center mt-4">
           <input
+            checked={!!isCheckboxChecked}
+            onClick={(e) => handleCheckboxChange(e)}
             className="w-4 h-4  border border-t500 rounded z-[100]
         text-yellow-500
         cursor-pointer
@@ -235,7 +263,9 @@ const Signup = () => {
             placeholder="Check"
             {...register("checkbox", { required: true })}
           />
-          <Text className="text-sm text-gray-700 font-normal underline hover:underline-offset-1 cursor-pointer">
+          <Text
+            onClick={openConditions}
+            className="text-sm text-gray-700 font-normal underline hover:underline-offset-1 cursor-pointer">
             Kullanım koşulları
           </Text>
         </div>
@@ -248,8 +278,47 @@ const Signup = () => {
       </form>
 
       <div className="flex flex-row gap-1 text-gray-500 text-sm font-medium mt-16">
-        Hesabın var mı? <Text className="text-gray-900 cursor-pointer ">Giriş Yap</Text>
+        Hesabın var mı?
+        <Text onClick={route_login} className="text-gray-900 cursor-pointer ">
+          Giriş Yap
+        </Text>
       </div>
+
+      <ModalContainer isOpen={openConditionsModal} onClose={closeConditions}>
+        <div className="relative flex flex-col items-center justify-center gap-4 as:px-2">
+          <Icon
+            purpose="close"
+            onClick={closeConditions}
+            className="absolute -top-4 -right-4 as:-right-1 cursor-pointer"
+          />
+          <Text className="text-base font-bold mb-4 as:mt-2 text-center">
+            Kişisel Verilerin İşlenmesine İlişkin Aydınlatma
+          </Text>
+          <Text className="text-sm text-gray-500 font-light text-center h-[320px] overflow-y-auto">
+            Bu uygulama, 6 Şubat 2023 tarihinde Türkiye’de meydana gelen büyük deprem felaketinde, arama kurtarma
+            çalışmaları ile yardım ve destek taleplerini ortak bir veri tabanında toplayarak yetkili kurum ve
+            kuruluşlara aktarmak amacı ile bilişim teknolojileri alanında çalışan gönüllüler tarafından oluşturulmuştur.
+            Yardım ya da desteğe ihtiyacı olduğunu belirttiğiniz kişilerin kişisel verileri ‘’Fiili imkânsızlık
+            nedeniyle rızasını açıklayamayacak durumda bulunan veya rızasına hukuki geçerlilik tanınmayan kişinin
+            kendisinin ya da bir başkasının hayatı veya beden bütünlüğünün korunması için zorunlu olması’’ hukuki
+            sebebine dayanarak, otomatik yollarla işlenecektir. Tarafınıza ait kişisel veriler, ‘’Bir hakkın tesisi,
+            kullanılması veya korunması için veri işlemenin zorunlu olması’’ hukuki sebebine dayanarak
+            işlenecektir.Paylaşacağınız yardım, destek taleplerinde yer alan isim, soy isim, telefon ve adres gibi
+            kişisel veriler, tarafımızca oluşturulan ve sunucuları yurtiçi ve yurtdışında bulunan veri tabanında
+            toplanarak, Afad, Akut, Kızılay gibi yetkili arama kurtarma kuruluşlarının yanı sıra destek ve yardım
+            taleplerini karşılayabilecek sivil toplum kuruluşları ile kişisel veri işleme amacı ile sınırlı olarak
+            paylaşılacaktır. Uygulama vasıtası ile sisteme girilen veriler ise uygulamanın afet durumlarında kesintisiz
+            kullanılabilmesi, yoğun kullanımda hata oluşmaması adına GDPR uyumlu olarak AWS sunucularında 256bit şifreli
+            barındırılmaktadır. Verilerinizin yurtdışı sunucularında saklanmasını tercih etmediğiniz takdirde lütfen
+            sisteme bilgi girişi yapmayınız.
+          </Text>
+          <div className="max-w-[350px] w-full mt-6">
+            <Button purpose="black" height={42} onClick={acceptConditions}>
+              Onaylıyorum
+            </Button>
+          </div>
+        </div>
+      </ModalContainer>
     </div>
   );
 };

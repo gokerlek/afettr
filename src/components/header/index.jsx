@@ -2,10 +2,15 @@ import Icon from "../Icon.jsx";
 import { Button, Text } from "../index.js";
 import useToggle from "../../hooks/useToggle.jsx";
 import BeEditorDrawer from "../modal/drawwer/BeEditorDrawer.jsx";
+import { useNavigate } from "react-router-dom";
+import paths from "../../paths.js";
 
 const Header = ({ editor }) => {
   const [isOpen, setIsOpen] = useToggle(false);
-  const beEditor = () => {};
+  const navigate = useNavigate();
+  const beEditor = () => {
+    navigate(paths.signup);
+  };
   const openMenu = () => {
     setIsOpen();
   };

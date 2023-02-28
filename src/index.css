@@ -41,5 +41,8 @@ body {
     @apply font-body;
     touch-action: manipulation;
 }
+.special-label {
+    @apply block text-sm font-medium text-black mt-2 mb-1;
+}
 
 

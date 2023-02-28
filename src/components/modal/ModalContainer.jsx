@@ -20,7 +20,7 @@ const ModalContainer = ({ isOpen, onClose, children, options }) => {
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full  items-center justify-center p-4 as:p-0 text-center">
+          <div className="flex min-h-full  items-center justify-center p-4 as:p-2 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -31,7 +31,7 @@ const ModalContainer = ({ isOpen, onClose, children, options }) => {
               leaveTo="opacity-0 scale-95">
               <Dialog.Panel
                 className={clsx(
-                  "w-full as:h-[80vh]  transform overflow-hidden rounded-lg bg-white p-8 as:px-4 text-left align-middle shadow-xl transition-all",
+                  "w-full as:h-fit  transform overflow-hidden rounded-lg bg-white p-8 as:px-4 text-left align-middle shadow-xl transition-all",
                   maxWidth ?? "max-w-2xl"
                 )}>
                 {children}

@@ -2,10 +2,14 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Button, Text } from "../../index.js";
 import Icon from "../../Icon.jsx";
+import { useNavigate } from "react-router-dom";
+import paths from "../../../paths.js";
 
 const BeEditorDrawer = ({ isOpen, setIsOpen }) => {
-  const beEditor = () => {};
-
+  const navigate = useNavigate();
+  const beEditor = () => {
+    navigate(paths.signup);
+  };
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-[100]" onClose={setIsOpen}>
