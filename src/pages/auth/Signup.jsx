@@ -4,73 +4,14 @@ import { Button, Text } from "../../components/index.js";
 import InputMask from "react-input-mask";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import clsx from "clsx";
 import PhoneInput from "react-phone-input-2";
 import { useNavigate } from "react-router-dom";
 import paths from "../../paths.js";
-import ModalContainer from "../../components/modal/ModalContainer.jsx";
-import Icon from "../../components/Icon.jsx";
+import { inputs } from "../../components/Input/inputs.jsx";
+import { style } from "../../components/Input/style.jsx";
+import Conditions from "../../components/Conditions.jsx";
 
-const inputs = {
-  name: {
-    name: "name",
-    type: "text",
-    placeholder: "Ad Soyad yazınız",
-    label: "Ad Soyad",
-    required: "Lütfen adınızı ve soyadınızı yazınız",
-  },
-  birthYear: {
-    name: "birthYear",
-    type: "number",
-    placeholder: "Doğum Yılı yazınız",
-    label: "Doğum Yılı",
-    required: "Lütfen doğum yılınızı yazınız",
-  },
-
-  tc: {
-    name: "tc",
-    type: "number",
-    placeholder: "11111111111",
-    label: "TC Kimlik Numarası",
-    required: "Lütfen TC kimlik numaranızı yazınız",
-  },
-  education: {
-    name: "education",
-    type: "text",
-    placeholder: "Öğrenim durumunuzu yazınız",
-    label: "Öğrenim Durumu",
-    required: "Lütfen öğrenim durumunuzu seçiniz",
-  },
-  job: {
-    name: "job",
-    type: "text",
-    placeholder: "Mesleğinizi yazınız",
-    label: "Meslek",
-    required: "Lütfen mesleğinizi yazınız",
-  },
-  email: {
-    name: "email",
-    type: "email",
-    placeholder: "ornek@mail.com",
-    label: "E-posta",
-    required: "Lütfen geçerli bir e-posta adresi yazınız",
-  },
-  phone: {
-    name: "phone",
-    type: "text",
-    placeholder: "Phone",
-    label: "Telefon Numarası",
-    required: "Lütfen geçerli bir telefon numarası yazınız",
-  },
-  checkbox: {
-    name: "checkbox",
-    type: "checkbox",
-    placeholder: "Checkbox",
-    label: "Checkbox",
-    required: "Lütfen kullanım koşullarını kabul ediniz",
-  },
-};
-const Signup = (callback, deps) => {
+const Signup = () => {
   const {
     register,
     handleSubmit,
@@ -117,22 +58,11 @@ const Signup = (callback, deps) => {
   };
   const onSubmit = (data) => console.log(data);
 
-  const inputClassName = (error) =>
-    clsx(
-      "px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400  ",
-      "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 ",
-      "focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md text-sm focus:ring-1 ",
-      {
-        "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-pink-500": error,
-      }
-    );
+  const { labelClassName, inputClassName, errorClassName } = style();
 
-  const labelClassName = "block text-sm font-medium text-black mt-2 mb-1";
-
-  const errorClassName = "mt-1 text-pink-500 text-xs";
   return (
     <div className="flex flex-col items-center justify-start w-full h-[calc(100vh-80px)]  overflow-y-auto no-scrollbar">
-      <Text className="text-black text-2xl font-bold mb-3">Kayıt Ol</Text>
+      <Text className="text-black text-2xl as:text-lg font-bold mb-3">Kayıt Ol</Text>
       <Text className="text-gray-500 text-sm font-medium mb-6">Gönüllü olarak kayıt ol, yer bildirmeye başla!</Text>
       <form className="flex flex-col max-w-[400px] w-full h-fit mx-3 px-2">
         <label className={labelClassName} htmlFor="name">
@@ -284,41 +214,11 @@ const Signup = (callback, deps) => {
         </Text>
       </div>
 
-      <ModalContainer isOpen={openConditionsModal} onClose={closeConditions}>
-        <div className="relative flex flex-col items-center justify-center gap-4 as:px-2">
-          <Icon
-            purpose="close"
-            onClick={closeConditions}
-            className="absolute -top-4 -right-4 as:-right-1 cursor-pointer"
-          />
-          <Text className="text-base font-bold mb-4 as:mt-2 text-center">
-            Kişisel Verilerin İşlenmesine İlişkin Aydınlatma
-          </Text>
-          <Text className="text-sm text-gray-500 font-light text-center h-[320px] overflow-y-auto">
-            Bu uygulama, 6 Şubat 2023 tarihinde Türkiye’de meydana gelen büyük deprem felaketinde, arama kurtarma
-            çalışmaları ile yardım ve destek taleplerini ortak bir veri tabanında toplayarak yetkili kurum ve
-            kuruluşlara aktarmak amacı ile bilişim teknolojileri alanında çalışan gönüllüler tarafından oluşturulmuştur.
-            Yardım ya da desteğe ihtiyacı olduğunu belirttiğiniz kişilerin kişisel verileri ‘’Fiili imkânsızlık
-            nedeniyle rızasını açıklayamayacak durumda bulunan veya rızasına hukuki geçerlilik tanınmayan kişinin
-            kendisinin ya da bir başkasının hayatı veya beden bütünlüğünün korunması için zorunlu olması’’ hukuki
-            sebebine dayanarak, otomatik yollarla işlenecektir. Tarafınıza ait kişisel veriler, ‘’Bir hakkın tesisi,
-            kullanılması veya korunması için veri işlemenin zorunlu olması’’ hukuki sebebine dayanarak
-            işlenecektir.Paylaşacağınız yardım, destek taleplerinde yer alan isim, soy isim, telefon ve adres gibi
-            kişisel veriler, tarafımızca oluşturulan ve sunucuları yurtiçi ve yurtdışında bulunan veri tabanında
-            toplanarak, Afad, Akut, Kızılay gibi yetkili arama kurtarma kuruluşlarının yanı sıra destek ve yardım
-            taleplerini karşılayabilecek sivil toplum kuruluşları ile kişisel veri işleme amacı ile sınırlı olarak
-            paylaşılacaktır. Uygulama vasıtası ile sisteme girilen veriler ise uygulamanın afet durumlarında kesintisiz
-            kullanılabilmesi, yoğun kullanımda hata oluşmaması adına GDPR uyumlu olarak AWS sunucularında 256bit şifreli
-            barındırılmaktadır. Verilerinizin yurtdışı sunucularında saklanmasını tercih etmediğiniz takdirde lütfen
-            sisteme bilgi girişi yapmayınız.
-          </Text>
-          <div className="max-w-[350px] w-full mt-6">
-            <Button purpose="black" height={42} onClick={acceptConditions}>
-              Onaylıyorum
-            </Button>
-          </div>
-        </div>
-      </ModalContainer>
+      <Conditions
+        acceptConditions={acceptConditions}
+        closeConditions={closeConditions}
+        openConditionsModal={openConditionsModal}
+      />
     </div>
   );
 };

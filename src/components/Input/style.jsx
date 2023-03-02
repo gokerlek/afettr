@@ -1,40 +1,19 @@
 import clsx from "clsx";
 
-export const style = ({ darkLabel, leftIcon, rightIcon, error, purpose }) => {
+export const style = () => {
   return {
-    base: {
-      label: clsx("text-sm font-medium  mb-1", {
-        "text-tGray-700": darkLabel,
-        "text-tGray-600": !darkLabel,
-      }),
-      input: clsx(
-        " appearance-none bg-t100  border  rounded-md py-2  shadow-sm ",
-        " placeholder:text-t700 animate-shadow ",
-        "focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm",
+    inputClassName: (error) =>
+      clsx(
+        "px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400  ",
+        "disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 ",
+        "focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md text-sm focus:ring-1 ",
         {
-          "pl-9": leftIcon,
-          "pr-9": rightIcon,
-          "pr-3": !rightIcon,
-          "pl-3": !leftIcon,
-          "border-t500": !error,
-          "border-error": error,
-          "w-12 h-12 flex items-center justify-center text-center":
-            purpose.includes("code"),
-          "w-full block": !purpose.includes("code"),
+          "border-pink-500 text-pink-600 focus:border-pink-500 focus:ring-pink-500": error,
         }
       ),
-    },
-    firmProfile: {
-      label: "text-sm font-light  mb-2.5 text-pGray-800 text-pBlack-400",
-      input: clsx(
-        " appearance-none bg-t100  border  rounded py-3  shadow-sm w-full block ",
-        " placeholder:text-t700 animate-shadow ",
-        "focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm",
-        {
-          "border-pBorder-50": !error,
-          "border-error": error,
-        }
-      ),
-    },
+
+    labelClassName: "block text-sm font-medium text-black mt-2 mb-1",
+
+    errorClassName: "mt-1 text-pink-500 text-xs",
   };
 };

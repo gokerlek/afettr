@@ -49,6 +49,19 @@ const Button = ({ children, onClick, leftIcon, rightIcon, purpose, className, fi
         "bg-gray-400": disabled,
       }
     ),
+
+    white: clsx(
+      disabledClassName,
+      "flex items-center justify-center bg-white border border-black rounded-md py-2 px-4 h-7 gap-2 font-medium",
+      text ?? "text-sm",
+      " text-black font-medium  text-center capitalize",
+      {
+        "w-full": !fit,
+        "w-fit min-w-fit": fit,
+        "cursor-pointer bg-black hover:bg-gray-50": !disabled,
+        "bg-gray-400": disabled,
+      }
+    ),
     gray: clsx(
       "flex items-center justify-center bg-gray-200 rounded-md py-2 px-4 h-7 gap-2 font-medium",
       " text-gray-500 font-medium cursor-pointer text-center text-xs capitalize",

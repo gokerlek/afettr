@@ -15,6 +15,11 @@ const useInputValue = (purpose, t) => {
       name: purpose,
       placeholder: t("You can enter detailed information."),
     },
+    code: {
+      name: purpose,
+      label: "",
+      type: "number",
+    },
   };
 
   const { name, label, placeholder, leftIcon, rightIcon, type } = inputValues[purpose];
