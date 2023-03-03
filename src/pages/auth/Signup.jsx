@@ -159,7 +159,7 @@ const Signup = () => {
         {errors[inputs.email.name] && <p className={errorClassName}>{errors[inputs.email.name].message}</p>}
 
         <Controller
-          name="phoneNumber"
+          name="phone"
           control={control}
           defaultValue=""
           render={({ field }) => (

@@ -23,27 +23,33 @@ const Login = () => {
 
   const {
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     control,
+    watch,
   } = useForm({
     mode: "onSubmit",
     reValidateMode: "onChange",
     resolver: yupResolver(
       yup.object().shape({
-        phone: yup.string().required(inputs.phone.required),
+        phone: yup.number().required(inputs.phone.required),
       })
     ),
   });
   const { inputClassName, errorClassName } = style();
 
-  const navigate = useNavigate();
+  console.log(watch("phone"));
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const navigate = useNavigate();
+  const route_otp_screen = () => {
+    navigate(paths.register);
   };
 
   const route_signup = () => {
     navigate(paths.signup);
+  };
+  const onSubmit = (data) => {
+    console.log(data);
+    route_otp_screen();
   };
 
   return (
@@ -56,7 +62,7 @@ const Login = () => {
       </div>
       <form className="flex flex-col max-w-[400px] w-full h-fit mx-3 px-2 gap-5">
         <Controller
-          name="phoneNumber"
+          name="phone"
           control={control}
           defaultValue=""
           render={({ field }) => (
