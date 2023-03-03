@@ -31,7 +31,7 @@ const Login = () => {
     reValidateMode: "onChange",
     resolver: yupResolver(
       yup.object().shape({
-        phone: yup.number().required(inputs.phone.required),
+        phone: yup.string().required(inputs.phone.required),
       })
     ),
   });
