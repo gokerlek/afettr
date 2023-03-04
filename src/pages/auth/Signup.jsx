@@ -4,7 +4,8 @@ import { Button, Text } from "../../components/index.js";
 import InputMask from "react-input-mask";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import PhoneInput from "react-phone-input-2";
+// import PhoneInput from "react-phone-input-2";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import { useNavigate } from "react-router-dom";
 import paths from "../../paths.js";
 import { inputs } from "../../components/Input/inputs.jsx";
@@ -162,15 +163,11 @@ const Signup = () => {
           name="phone"
           control={control}
           defaultValue=""
-          render={({ field }) => (
-            <PhoneInput
-              {...field}
-              country={"tr"}
-              specialLabel={"Telefon Numarası"}
-              placeholder="Telefon Numarası Giriniz"
-              inputClass={inputClassName(errors.phone)}
-              inputStyle={{ width: "100%" }}
-            />
+          rules={{
+            validate: (value) => isValidPhoneNumber(value) || "Geçerli bir telefon numarası giriniz",
+          }}
+          render={({ field: { onChange, value } }) => (
+            <PhoneInput value={value} onChange={onChange} defaultCountry="TR" id="phone" />
           )}
         />
         {errors.phone && <p className={errorClassName}>{errors.phone.message}</p>}
