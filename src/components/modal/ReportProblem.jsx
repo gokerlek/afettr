@@ -5,9 +5,16 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import useInputValue from "../../hooks/useInputValue.js";
 import Icon from "../Icon.jsx";
+import { useMap } from "../../context/MapProvider.jsx";
 
 const ReportProblem = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
+
+  const { location_data } = useMap();
+
+  const { cat_name, cat_icon, cat_details, cat_id } = location_data ?? {};
+
+  const { cat_address } = cat_details ?? {};
 
   const { name, placeholder } = useInputValue("report-a-problem", t);
 
@@ -18,7 +25,7 @@ const ReportProblem = ({ isOpen, onClose }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log(data, cat_id);
   };
 
   return (
@@ -31,7 +38,7 @@ const ReportProblem = ({ isOpen, onClose }) => {
       <div className="as:flex flex-col as:justify-between as:h-full">
         <div>
           <Icon purpose="close" onClick={onClose} className="absolute top-2 right-2" />
-          <DetailsHeader />
+          <DetailsHeader data={{ icon: cat_icon, title: cat_name, address: cat_address, lastUpdated: null }} />
           <Text className="text-gray-700 text-sm font-medium capitalize mt-4">report a problem</Text>
           <textarea
             autoFocus={false}

@@ -1,8 +1,10 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import Details from "../../cards/Details.jsx";
+import { useMap } from "../../../context/MapProvider.jsx";
 
-const DetailsDrawer = ({ openDetailCard, setOpenDetailCard, openModal }) => {
+const DetailsDrawer = ({ openModal }) => {
+  const [openDetailCard, setOpenDetailCard] = useMap();
   return (
     <Transition.Root show={openDetailCard} as={Fragment}>
       <Dialog as="div" className="relative z-[1001] " onClose={setOpenDetailCard}>
@@ -28,7 +30,7 @@ const DetailsDrawer = ({ openDetailCard, setOpenDetailCard, openModal }) => {
             leaveTo="translate-y-full">
             <Dialog.Panel className="pointer-events-auto relative w-screen max-w-md bg-white rounded">
               <div className="flex  flex-col overflow-y-scroll  px-4 pb-4 pt-3  gap-4">
-                <Details setOpenDetailCard={setOpenDetailCard} openModal={openModal} />
+                <Details openModal={openModal} />
               </div>
             </Dialog.Panel>
           </Transition.Child>

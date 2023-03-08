@@ -10,9 +10,9 @@ const Text = ({ children, noTranslate, markdown, className, onClick, searchTerms
 
   if (markdown) {
     return (
-      <ReactMarkdown className={className} onClick={onClick}>
-        {replacedText}
-      </ReactMarkdown>
+      <div onClick={onClick}>
+        <ReactMarkdown className={className}>{replacedText}</ReactMarkdown>
+      </div>
     );
   } else {
     return (

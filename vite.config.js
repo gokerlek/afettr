@@ -5,6 +5,7 @@ import rollupReplace from "@rollup/plugin-replace";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/",
   plugins: [
     rollupReplace({
       preventAssignment: true,
@@ -16,4 +17,7 @@ export default defineConfig({
     react(),
     svgr(),
   ],
+  server: {
+    historyApiFallback: true,
+  },
 });

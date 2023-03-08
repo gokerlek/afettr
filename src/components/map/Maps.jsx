@@ -1,5 +1,5 @@
 import { GoogleMap, LoadScript, Marker, MarkerClusterer } from "@react-google-maps/api";
-import { locations, mapContainerStyle } from "./locations.jsx";
+import { mapContainerStyle } from "./locations.jsx";
 import { useCallback, useState } from "react";
 import mapStyle from "./mapStayle.jsx";
 import DetailsDrawer from "../modal/drawwer/DetailsDrawer.jsx";
@@ -7,6 +7,7 @@ import Details from "../cards/Details.jsx";
 import useWindowsSize from "../../hooks/useWindowsSize.jsx";
 import { BREAKPOINTS } from "../../constants.js";
 import ReportProblem from "../modal/ReportProblem.jsx";
+import { useMap } from "../../context/MapProvider.jsx";
 
 function createKey() {
   // create a unique key for each location
@@ -15,6 +16,7 @@ function createKey() {
 
 const Maps = () => {
   const { width } = useWindowsSize();
+  const { updateCenter, center, zoom, openDetailCard, setOpenDetailCard, filteredLocations } = useMap();
 
   const drawerCondition = width < BREAKPOINTS.MOBILE;
 
@@ -23,7 +25,6 @@ const Maps = () => {
   const openModal = () => {
     setIsOpen(true);
     if (drawerCondition) {
-      console.log("drawerCondition", drawerCondition);
       setOpenDetailCard(false);
     }
   };
@@ -32,27 +33,9 @@ const Maps = () => {
     setIsOpen(false);
   }, []);
 
-  const [openDetailCard, setOpenDetailCard] = useState(false);
-
-  const [center, setCenter] = useState({ lat: -31.56391, lng: 147.154312 });
-
-  const [zoom, setZoom] = useState(6);
-
-  const updateCenter = useCallback(
-    (lat, lng) => () => {
-      setCenter({ lat, lng });
-      setZoom(10);
-
-      setOpenDetailCard(true);
-    },
-    [setCenter, setZoom, setOpenDetailCard]
-  );
-
   return (
     <div className="w-full h-full">
-      {drawerCondition && (
-        <DetailsDrawer openDetailCard={openDetailCard} setOpenDetailCard={setOpenDetailCard} openModal={openModal} />
-      )}
+      {drawerCondition && <DetailsDrawer openModal={openModal} />}
 
       {!drawerCondition && openDetailCard && (
         <div className=" fixed top-[120px] right-[32px]  flex max-w-full z-[10] ">
@@ -82,13 +65,16 @@ const Maps = () => {
             }}>
             {(clusterer) => (
               <>
-                {locations?.map((location) => (
+                {filteredLocations?.map((location) => (
                   <Marker
                     key={createKey(location)}
-                    position={location}
+                    position={{ lat: Number(location.lat), lng: Number(location.lng) }}
                     clusterer={clusterer}
-                    icon={location.icon}
-                    onClick={updateCenter(location.lat, location.lng)}
+                    icon={{
+                      url: location.cat_icon,
+                      scaledSize: new window.google.maps.Size(30, 30),
+                    }}
+                    onClick={updateCenter(location)}
                   />
                 ))}
               </>
