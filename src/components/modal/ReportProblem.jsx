@@ -12,9 +12,9 @@ const ReportProblem = ({ isOpen, onClose }) => {
 
   const { location_data } = useMap();
 
-  const { cat_name, cat_icon, cat_details, cat_id } = location_data ?? {};
+  const { cat_name, cat_icon, neighborhood_name, street, town_name, city_name, cat_id } = location_data ?? {};
 
-  const { cat_address } = cat_details ?? {};
+  const cat_address = `${neighborhood_name} ${street} - ${town_name}/${city_name}`;
 
   const { name, placeholder } = useInputValue("report-a-problem", t);
 

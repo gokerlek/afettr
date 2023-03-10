@@ -3,12 +3,12 @@ import Dropdown from "../buttons/Dropdown.jsx";
 import { useEffect } from "react";
 import NeededCheck from "../header/NeededCheck.jsx";
 import clsx from "clsx";
-import { mapData } from "../../../public/locs.js";
 import useFilterList from "../../hooks/useFilterList.jsx";
 import { useMap } from "../../context/MapProvider.jsx";
 
 const Sidebar = () => {
   const {
+    map_data,
     checkedCategories,
     setCheckedCategories,
     filter_locations,
@@ -24,15 +24,14 @@ const Sidebar = () => {
     selectedTown,
     setSelectedTown,
   } = useMap();
-  const { locations } = mapData;
-  const filter_list = useFilterList(locations);
+
+  const filter_list = useFilterList(map_data.map((loc) => loc?.details));
 
   useEffect(() => {
     get_city();
   }, []);
 
   const handleCityChange = (value) => {
-    console.log(value);
     if (!!selectedCity && value.id === selectedCity.id) {
       setSelectedCity(null);
       filter_locations_by_city(0);

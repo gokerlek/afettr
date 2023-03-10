@@ -68,7 +68,7 @@ const Maps = () => {
                 {filteredLocations?.map((location) => (
                   <Marker
                     key={createKey(location)}
-                    position={{ lat: Number(location.lat), lng: Number(location.lng) }}
+                    position={{ lat: Number(location.latitude), lng: Number(location.longitude) }}
                     clusterer={clusterer}
                     icon={{
                       url: location.cat_icon,

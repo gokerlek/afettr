@@ -8,5 +8,3 @@ const App = () => {
 };
 
 export default App;
-
-// bisi sorcam arastima yaptim ettim sunu yapiyormusun server ayarlarinda hangi sayfaya gidersen git index.html yonlendirmesi yaptin mi? fallback url deniyor sanirm.

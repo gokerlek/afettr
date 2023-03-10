@@ -13,7 +13,7 @@ const DetailsHeader = ({ data, setOpenDetailCard }) => {
       <div className="flex flex-col w-full ">
         <Text className="text-gray-700 text-lg font-medium">{title ?? ""}</Text>
 
-        <Text className="text-gray-500 text-sm font-normal">{address ?? ""}</Text>
+        <Text className="text-gray-500 text-sm font-normal capitalize">{address?.toLowerCase() ?? ""}</Text>
 
         {lastUpdated && (
           <Text

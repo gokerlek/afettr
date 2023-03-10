@@ -5,9 +5,21 @@ import { useMap } from "../../context/MapProvider.jsx";
 const Details = ({ openModal }) => {
   const { location_data, setOpenDetailCard } = useMap();
 
-  const { cat_name, cat_icon, lat, lng, cat_details } = location_data;
+  const {
+    cat_name,
+    cat_icon,
+    latitude,
+    longitude,
+    note,
+    neighborhood_name,
+    street,
+    town_name,
+    city_name,
+    pics,
+    sub_cats,
+  } = location_data;
 
-  const { cat_address, images, details, notes } = cat_details;
+  const cat_address = `${neighborhood_name} ${street} -${town_name}/${city_name}`;
 
   function openMap() {
     if (navigator.geolocation) {
@@ -16,7 +28,7 @@ const Details = ({ openModal }) => {
           const startLat = position.coords.latitude;
           const startLng = position.coords.longitude;
 
-          const url = `https://www.google.com/maps/dir/?api=1&origin=${startLat},${startLng}&destination=${lat},${lng}&travelmode=driving`;
+          const url = `https://www.google.com/maps/dir/?api=1&origin=${startLat},${startLng}&destination=${latitude},${longitude}&travelmode=driving`;
           window.open(url, "_blank");
         },
         (error) => {
@@ -34,27 +46,29 @@ const Details = ({ openModal }) => {
         setOpenDetailCard={setOpenDetailCard}
         data={{ icon: cat_icon, title: cat_name, address: cat_address, lastUpdated: null }}
       />
-      {images && images.length > 0 && (
+      {pics && pics.length > 0 && (
         <div className="flex flex-col w-full border-b border-gray-200 mb-2 pb-2">
           <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">images</Text>
 
           <div className=" h-16 overflow-x-auto mr-[-16px] flex  gap-2 no-scrollbar">
-            {images.map((image, i) => (
-              <img src={image + ""} alt={"marker"} key={i} className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg" />
+            {pics.map(({ pic_url, pic_id }, i) => (
+              <img src={pic_url + ""} alt={pic_id} key={i} className="min-w-[64px]  w-16 h-16 bg-gray-200 rounded-lg" />
             ))}
           </div>
         </div>
       )}
 
-      {details && details.length > 0 && (
+      {sub_cats && sub_cats.length > 0 && (
         <div className="flex flex-col w-full  mb-2 pb-2">
           <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">detailed info</Text>
 
           <div className="flex flex-col gap-2">
-            {details.map(({ title, value }, i) => (
+            {sub_cats.map(({ sub_cat_name, sub_cat_option_name }, i) => (
               <div key={i} className="flex w-full border-b border-gray-200 py-1">
-                <Text className="text-gray-500 text-sm font-normal w-24 capitalize">{title}</Text>
-                <Text className=" flex-1 text-gray-800 text-sm font-normal capitalize">{value}</Text>
+                <Text className="text-gray-500 text-sm font-normal w-24 capitalize">{sub_cat_name.toLowerCase()}</Text>
+                <Text className=" flex-1 text-gray-800 text-sm font-normal capitalize">
+                  {sub_cat_option_name.toLowerCase()}
+                </Text>
               </div>
             ))}
           </div>
@@ -63,7 +77,7 @@ const Details = ({ openModal }) => {
 
       <div className="flex flex-col w-full mb-2 pb-2">
         <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">officer's notes</Text>
-        <Text className="text-gray-500 text-sm font-normal capitalize max-h-[60px] overflow-y-auto">{notes}</Text>
+        <Text className="text-gray-500 text-sm font-normal capitalize max-h-[60px] overflow-y-auto">{note}</Text>
       </div>
 
       <Button height={40} purpose="black" onClick={openMap}>
