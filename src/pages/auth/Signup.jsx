@@ -4,10 +4,9 @@ import { Button, Text } from "../../components/index.js";
 import InputMask from "react-input-mask";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
-// import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-// import "react-phone-number-input/style.css";
+// import PhoneInput from "react-phone-input-2";
+import Input, { isValidPhoneNumber } from "react-phone-number-input/input";
+import "react-phone-number-input/style.css";
 import { useNavigate } from "react-router-dom";
 import paths from "../../paths.js";
 import { inputs } from "../../components/Input/inputs.jsx";
@@ -164,21 +163,24 @@ const Signup = () => {
         <label className={labelClassName} htmlFor="phone">
           {inputs.phone.label}
         </label>
+
         <Controller
           name="phone"
           control={control}
           defaultValue=""
+          rules={{
+            validate: (value) => isValidPhoneNumber(value) || "Geçerli bir telefon numarası giriniz",
+          }}
           render={({ field: { onChange, value } }) => (
-            <PhoneInput
+            <Input
               value={value}
               onChange={onChange}
-              country={"tr"}
-              enableSearch={true}
-              containerStyle={{ width: "100%", zIndex: 999 }}
-              inputStyle={{
-                width: "100%",
-                height: "40px",
-              }}
+              defaultCountry="TR"
+              country={"TR"}
+              international
+              withCountryCallingCode
+              className={inputClassName(errors.phone)}
+              id="phone"
             />
           )}
         />
