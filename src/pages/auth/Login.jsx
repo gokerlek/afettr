@@ -1,9 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { Button, Text } from "../../components/index.js";
 import { Controller, useForm } from "react-hook-form";
-// import PhoneInput from "react-phone-input-2";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
-
+import Input, { isValidPhoneNumber } from "react-phone-number-input/input";
+import "react-phone-number-input/style.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { inputs } from "../../components/Input/inputs.jsx";
@@ -25,7 +24,7 @@ const Login = () => {
 
   const {
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors },
     control,
     watch,
   } = useForm({
@@ -71,7 +70,16 @@ const Login = () => {
             validate: (value) => isValidPhoneNumber(value) || "Geçerli bir telefon numarası giriniz",
           }}
           render={({ field: { onChange, value } }) => (
-            <PhoneInput value={value} onChange={onChange} defaultCountry="TR" id="phone" />
+            <Input
+              value={value}
+              onChange={onChange}
+              defaultCountry="TR"
+              country={"TR"}
+              international
+              withCountryCallingCode
+              className={inputClassName(errors.phone)}
+              id="phone"
+            />
           )}
         />
         {errors.phone && <p className={errorClassName}>{errors.phone.message}</p>}

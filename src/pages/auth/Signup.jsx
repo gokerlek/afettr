@@ -4,7 +4,6 @@ import { Button, Text } from "../../components/index.js";
 import InputMask from "react-input-mask";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-// import PhoneInput from "react-phone-input-2";
 import Input, { isValidPhoneNumber } from "react-phone-number-input/input";
 import "react-phone-number-input/style.css";
 import { useNavigate } from "react-router-dom";
