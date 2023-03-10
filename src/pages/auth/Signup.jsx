@@ -168,9 +168,6 @@ const Signup = () => {
           name="phone"
           control={control}
           defaultValue=""
-          rules={{
-            validate: (value) => isValidPhoneNumber(value) || "Geçerli bir telefon numarası giriniz",
-          }}
           render={({ field: { onChange, value } }) => (
             <PhoneInput
               value={value}
