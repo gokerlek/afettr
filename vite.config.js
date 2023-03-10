@@ -17,7 +17,4 @@ export default defineConfig({
     react(),
     svgr(),
   ],
-  server: {
-    historyApiFallback: true,
-  },
 });

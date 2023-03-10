@@ -4,8 +4,10 @@ import { Button, Text } from "../../components/index.js";
 import InputMask from "react-input-mask";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-// import PhoneInput from "react-phone-input-2";
-import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+// import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+// import "react-phone-number-input/style.css";
 import { useNavigate } from "react-router-dom";
 import paths from "../../paths.js";
 import { inputs } from "../../components/Input/inputs.jsx";
@@ -159,6 +161,9 @@ const Signup = () => {
         />
         {errors[inputs.email.name] && <p className={errorClassName}>{errors[inputs.email.name].message}</p>}
 
+        <label className={labelClassName} htmlFor="phone">
+          {inputs.phone.label}
+        </label>
         <Controller
           name="phone"
           control={control}
@@ -167,7 +172,17 @@ const Signup = () => {
             validate: (value) => isValidPhoneNumber(value) || "Geçerli bir telefon numarası giriniz",
           }}
           render={({ field: { onChange, value } }) => (
-            <PhoneInput value={value} onChange={onChange} defaultCountry="TR" id="phone" />
+            <PhoneInput
+              value={value}
+              onChange={onChange}
+              country={"tr"}
+              enableSearch={true}
+              containerStyle={{ width: "100%", zIndex: 999 }}
+              inputStyle={{
+                width: "100%",
+                height: "40px",
+              }}
+            />
           )}
         />
         {errors.phone && <p className={errorClassName}>{errors.phone.message}</p>}
