@@ -1,5 +1,10 @@
 {
   "name": "afettr",
+  "author": {
+    "email": "gokerzafer@gmail.com",
+    "name": "Göker Zafer",
+    "url": "https://github.com/gokerlek"
+  },
   "homepage": "https://afettr.com",
   "proxy": "https://afettr.com",
   "private": true,

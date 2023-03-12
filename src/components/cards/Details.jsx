@@ -17,7 +17,11 @@ const Details = ({ openModal }) => {
     city_name,
     pics,
     sub_cats,
+    contact_name,
+    contact_phone,
   } = location_data;
+
+  console.log(location_data);
 
   const cat_address = `${neighborhood_name} ${street} -${town_name}/${city_name}`;
 
@@ -78,6 +82,16 @@ const Details = ({ openModal }) => {
       <div className="flex flex-col w-full mb-2 pb-2">
         <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">officer's notes</Text>
         <Text className="text-gray-500 text-sm font-normal capitalize max-h-[60px] overflow-y-auto">{note}</Text>
+      </div>
+
+      <div className="flex flex-col w-full mb-2 pb-2">
+        <Text className="text-xs text-gray-400 font-semibold mb-2 uppercase">contact info</Text>
+        <Text className="text-gray-500 text-sm font-normal capitalize max-h-[60px] overflow-y-auto">
+          {contact_name}
+        </Text>
+        <Text className="text-gray-500 text-sm font-normal capitalize max-h-[60px] overflow-y-auto">
+          {contact_phone}
+        </Text>
       </div>
 
       <Button height={40} purpose="black" onClick={openMap}>

@@ -37,6 +37,7 @@ export default {
   "last updated": "son güncelleme: **lastUpdate**",
   "get directions": "yol tarifi al",
   "officer's notes": "görevlinin notları",
+  "contatct info": "iletişim bilgileri",
   need: "ihtiyaç",
   "select a city": "şehir seçiniz",
   "select a district": "ilçe seçiniz",

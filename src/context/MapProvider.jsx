@@ -34,6 +34,8 @@ export const MapProvider = ({ children }) => {
 
   const [center, setCenter] = useState({});
 
+  console.log(center);
+
   const [zoom, setZoom] = useState(6);
 
   const getMapData = async () => {
@@ -55,6 +57,8 @@ export const MapProvider = ({ children }) => {
         setMopLocs(locs);
 
         setInitialLocations(useAverageLocation(locs));
+
+        console.log(useAverageLocation(locs), locs);
 
         setCenter({
           lat: useAverageLocation(locs, locs).averageLatitude,
